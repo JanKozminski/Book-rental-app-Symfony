@@ -1,5 +1,5 @@
 {
     "require": {
-        "knplabs/knp-paginator-bundle": "^6.2"
+        "knplabs/knp-paginator-bundle": "^3.6"
     }
 }

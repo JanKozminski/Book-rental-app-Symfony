@@ -7,7 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Task;
 use App\Repository\TaskRepository;
-use Knp\Component\Pager\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,17 +30,7 @@ class TaskController extends AbstractController
         name: 'task_index',
         methods: 'GET'
     )]
-    /**
-     * Index action.
-     *
-     * @param Request            $request        HTTP Request
-     * @param TaskRepository     $taskRepository Task repository
-     * @param PaginatorInterface $paginator      Paginator
-     *
-     * @return Response HTTP response
-     */
-    #[Route(name: 'task_index', methods: 'GET')]
-    public function index(Request $request, TaskRepository $taskRepository, Paginator $paginator): Response
+    public function index(Request $request, TaskRepository $taskRepository, PaginatorInterface $paginator): Response
     {
         $pagination = $paginator->paginate(
             $taskRepository->queryAll(),
