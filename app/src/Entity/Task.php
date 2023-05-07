@@ -55,6 +55,14 @@ class Task
      */
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $title = null;
+    /**
+     * Category.
+     *
+     * @var Categoryy
+     */
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categoryy $category = null;
 
     /**
      * Getter for Id.
@@ -124,5 +132,17 @@ class Task
     public function setTitle(?string $title): void
     {
         $this->title = $title;
+    }
+
+    public function getCategory(): ?Categoryy
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Categoryy $category): self
+    {
+        $this->category = $category;
+
+        return $this;
     }
 }

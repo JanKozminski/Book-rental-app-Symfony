@@ -1,6 +1,6 @@
 <?php
 /**
- * Category entity.
+ * Categoryy entity.
  */
 
 namespace App\Entity;
