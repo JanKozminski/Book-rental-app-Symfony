@@ -52,7 +52,7 @@ class Categoryy
      *
      * @var string|null
      */
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 64)]
     private ?string $title;
 
     /**
