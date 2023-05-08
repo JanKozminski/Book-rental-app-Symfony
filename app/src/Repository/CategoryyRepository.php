@@ -19,6 +19,7 @@ use Doctrine\Persistence\ManagerRegistry;
  *
  * @extends ServiceEntityRepository<Categoryy>
  */
+
 class CategoryyRepository extends ServiceEntityRepository
 {
     /**
