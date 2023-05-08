@@ -10,7 +10,7 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
-
+#fjs
 /**
  * @method Categoryy|null find($id, $lockMode = null, $lockVersion = null)
  * @method Categoryy|null findOneBy(array $criteria, array $orderBy = null)
