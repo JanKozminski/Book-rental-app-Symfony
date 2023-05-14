@@ -1,9 +1,8 @@
 <?php
 /**
- * Category repository.
+ * Categoryy repository.
  */
 namespace App\Repository;
-
 use App\Entity\Categoryy;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;

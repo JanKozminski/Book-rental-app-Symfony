@@ -144,7 +144,7 @@ class CategoryyController extends AbstractController
      * Delete action.
      *
      * @param Request  $request  HTTP request
-     * @param Category $category Category entity
+     * @param Categoryy $category Category entity
      *
      * @return Response HTTP response
      */
