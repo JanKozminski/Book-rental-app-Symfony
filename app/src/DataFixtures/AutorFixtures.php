@@ -5,7 +5,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Ksiazka;
+use App\Entity\Book;
 use App\Entity\Autor;
 use DateTimeImmutable;
 
@@ -24,19 +24,17 @@ class AutorFixtures extends AbstractBaseFixtures
      */
     public function loadData(): void
     {
-        $this->createMany(20, 'autorzy', function (int $i) {
+        $this->createMany(20, 'authors', function (int $i) {
             $autor = new Autor();
-            $plec = $this->faker->randomElement( $array = ['male','female']);
-            $autor->setImieINazwisko($this->faker->unique()->name($plec));
-            if($plec=='male') $autor->setPlec('M');
-            if($plec=='female') $autor->setPlec('K');
-            $autor->setDataNarodzin(
+            $sex = $this->faker->randomElement( $array = ['male','female']);
+            $autor->setName($this->faker->unique()->name($sex));
+            if($sex=='male') $autor->setSex('M');
+            if($sex=='female') $autor->setSex('F');
+            $autor->setBirthdate(
                 DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-156324 days', '-1 days'))
             );
-            $autor->setKrajPochodzenia($this->faker->country);
-            $ksiazka = $this->getRandomReference('ksiazki');
-            $autor->addKsiazki($ksiazka);
+            $autor->setCountryoforigin($this->faker->country);
             return $autor;
         });
 
@@ -44,6 +42,6 @@ class AutorFixtures extends AbstractBaseFixtures
     }
     public function getDependencies(): array
     {
-        return [KsiazkaFixtures::class];
+        return [BookFixtures::class];
     }
 }

@@ -18,25 +18,25 @@ class Autor
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $imie_i_nazwisko = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 1)]
-    #[Assert\Choice(['M', 'K'])]
-    private ?string $plec = null;
+    #[Assert\Choice(['M', 'F'])]
+    private ?string $sex = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $data_narodzin = null;
+    private ?\DateTimeInterface $birth_date = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\Country]
-    private ?string $kraj_pochodzenia = null;
+    private ?string $country_of_origin = null;
 
-    #[ORM\ManyToMany(targetEntity: Ksiazka::class, inversedBy: 'autor')]
-    private Collection $ksiazki;
+    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'autor')]
+    private Collection $books;
 
     public function __construct()
     {
-        $this->ksiazki = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -44,74 +44,74 @@ class Autor
         return $this->id;
     }
 
-    public function getImieINazwisko(): ?string
+    public function getName(): ?string
     {
-        return $this->imie_i_nazwisko;
+        return $this->name;
     }
 
-    public function setImieINazwisko(string $imie_i_nazwisko): self
+    public function setName(string $name): self
     {
-        $this->imie_i_nazwisko = $imie_i_nazwisko;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getPlec(): ?string
+    public function getSex(): ?string
     {
-        return $this->plec;
+        return $this->sex;
     }
 
-    public function setPlec(string $plec): self
+    public function setSex(string $sex): self
     {
-        $this->plec = $plec;
+        $this->sex = $sex;
 
         return $this;
     }
 
-    public function getDataNarodzin(): ?\DateTimeInterface
+    public function getBirthdate(): ?\DateTimeInterface
     {
-        return $this->data_narodzin;
+        return $this->birth_date;
     }
 
-    public function setDataNarodzin(\DateTimeInterface $data_narodzin): self
+    public function setBirthdate(\DateTimeInterface $birth_date): self
     {
-        $this->data_narodzin = $data_narodzin;
+        $this->birth_date = $birth_date;
 
         return $this;
     }
 
-    public function getKrajPochodzenia(): ?string
+    public function getCountryoforigin(): ?string
     {
-        return $this->kraj_pochodzenia;
+        return $this->country_of_origin;
     }
 
-    public function setKrajPochodzenia(string $kraj_pochodzenia): self
+    public function setCountryoforigin(string $country_of_origin): self
     {
-        $this->kraj_pochodzenia = $kraj_pochodzenia;
+        $this->country_of_origin = $country_of_origin;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Ksiazka>
+     * @return Collection<int, Book>
      */
-    public function getKsiazki(): Collection
+    public function getBooks(): Collection
     {
-        return $this->ksiazki;
+        return $this->books;
     }
 
-    public function addKsiazki(Ksiazka $ksiazki): self
+    public function addBooks(Book $ksiazki): self
     {
-        if (!$this->ksiazki->contains($ksiazki)) {
-            $this->ksiazki->add($ksiazki);
+        if (!$this->books->contains($ksiazki)) {
+            $this->books->add($ksiazki);
         }
 
         return $this;
     }
 
-    public function removeKsiazki(Ksiazka $ksiazki): self
+    public function removeBooks(Book $ksiazki): self
     {
-        $this->ksiazki->removeElement($ksiazki);
+        $this->books->removeElement($ksiazki);
 
         return $this;
     }
