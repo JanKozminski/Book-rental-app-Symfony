@@ -31,8 +31,8 @@ class Autor
     #[Assert\Country]
     private ?string $country_of_origin = null;
 
-    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'autor')]
-    private Collection $books;
+    //#[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'autor')]
+   // private Collection $books;
 
     public function __construct()
     {
