@@ -1,20 +1,20 @@
 <?php
 /**
- * Autor fixtures.
+ * Author fixtures.
  */
 
 namespace App\DataFixtures;
 
 use App\Entity\Book;
-use App\Entity\Autor;
+use App\Entity\Author;
 use DateTimeImmutable;
 
 /**
- * Class AutorFixtures.
+ * Class AuthorFixtures.
  *
  * @psalm-suppress MissingConstructor
  */
-class AutorFixtures extends AbstractBaseFixtures
+class AuthorFixtures extends AbstractBaseFixtures
 {
     /**
      * Load data.
@@ -25,7 +25,7 @@ class AutorFixtures extends AbstractBaseFixtures
     public function loadData(): void
     {
         $this->createMany(20, 'authors', function (int $i) {
-            $autor = new Autor();
+            $autor = new Author();
             $sex = $this->faker->randomElement( $array = ['male','female']);
             $autor->setName($this->faker->unique()->name($sex));
             if($sex=='male') $autor->setSex('M');

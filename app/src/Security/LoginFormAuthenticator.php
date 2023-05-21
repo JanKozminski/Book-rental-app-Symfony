@@ -39,7 +39,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      *
      * @const string
      */
-    public const DEFAULT_ROUTE = 'task_index';
+    public const DEFAULT_ROUTE = 'book_home_page';
 
     /**
      * URL Generator.

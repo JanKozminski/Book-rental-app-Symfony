@@ -23,7 +23,7 @@ class CategoryyFixtures extends AbstractBaseFixtures
      */
     public function loadData(): void
     {
-        $this->createMany(20, 'categories', function (int $i) {
+        $this->createMany(20, 'categoriess', function (int $i) {
             $category = new Categoryy();
             $category->setTitle($this->faker->unique()->word);
             $category->setCreatedAt(

@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Autor;
+use App\Entity\Author;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Autor>
+ * @extends ServiceEntityRepository<Author>
  *
- * @method Autor|null find($id, $lockMode = null, $lockVersion = null)
- * @method Autor|null findOneBy(array $criteria, array $orderBy = null)
- * @method Autor[]    findAll()
- * @method Autor[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Author|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Author|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Author[]    findAll()
+ * @method Author[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AutorRepository extends ServiceEntityRepository
+class AuthorRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Autor::class);
+        parent::__construct($registry, Author::class);
     }
 
-    public function save(Autor $entity, bool $flush = false): void
+    public function save(Author $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class AutorRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Autor $entity, bool $flush = false): void
+    public function remove(Author $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class AutorRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Autor[] Returns an array of Autor objects
+//     * @return Author[] Returns an array of Author objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class AutorRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Autor
+//    public function findOneBySomeField($value): ?Author
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')

@@ -20,7 +20,7 @@ class Book
     #[ORM\Column(length: 255)]
     #[Assert\Isbn(
         type: Assert\Isbn::ISBN_13,
-        message: 'Ta wartosc nie jest zgodna z ISBN13.',
+        message: 'This value isn`t right with ISBN13.',
     )]
     private ?string $isbn = null;
 
@@ -51,13 +51,13 @@ class Book
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'books')]
     private Collection $category;
 
-    #[ORM\ManyToMany(targetEntity: Autor::class, inversedBy: 'books')]
-    private Collection $autor;
+    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books')]
+    private Collection $author;
 
     public function __construct()
     {
         $this->category = new ArrayCollection();
-        $this->autor = new ArrayCollection();
+        $this->author = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -161,7 +161,7 @@ class Book
     {
         if (!$this->category->contains($kategorium)) {
             $this->category->add($kategorium);
-            $kategorium->addBooks($this);
+           // $kategorium->addBooks($this);
         }
 
         return $this;
@@ -177,26 +177,26 @@ class Book
     }
 
     /**
-     * @return Collection<int, Autor>
+     * @return Collection<int, Author>
      */
-    public function getAutor(): Collection
+    public function getAuthor(): Collection
     {
-        return $this->autor;
+        return $this->author;
     }
 
-    public function addAutor(Autor $autor): self
+    public function addAutor(Author $autor): self
     {
-        if (!$this->autor->contains($autor)) {
-            $this->autor->add($autor);
-            $autor->addBooks($this);
+        if (!$this->author->contains($autor)) {
+            $this->author->add($autor);
+       //     $autor->addBooks($this);
         }
 
         return $this;
     }
 
-    public function removeAutor(Autor $autor): self
+    public function removeAutor(Author $autor): self
     {
-        if ($this->autor->removeElement($autor)) {
+        if ($this->author->removeElement($autor)) {
             $autor->removeBooks($this);
         }
 

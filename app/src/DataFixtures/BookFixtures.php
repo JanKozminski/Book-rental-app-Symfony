@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Book fixtures.
  */
@@ -6,15 +7,16 @@
 namespace App\DataFixtures;
 
 use App\Entity\Book;
-use App\Entity\Autor;
+use App\Entity\Author;
 use DateTimeImmutable;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
  * Class BookFixtures.
  *
  * @psalm-suppress MissingConstructor
  */
-class BookFixtures extends AbstractBaseFixtures
+class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
      * Load data.
@@ -26,7 +28,7 @@ class BookFixtures extends AbstractBaseFixtures
     {
         $this->createMany(50, 'books', function (int $i) {
             $ksiazka = new Book();
-            $ksiazka->setTitle($this->faker->unique()->title);
+            $ksiazka->setTitle($this->faker->title);
             $ksiazka->setIsbn(
                     $this->faker->isbn13()
                 );
@@ -38,6 +40,7 @@ class BookFixtures extends AbstractBaseFixtures
             $ksiazka->setPage_number($this->faker->numberBetween(15, 2000));
             $ksiazka->setRating($this->faker->numberBetween(0, 10));
             $ksiazka->setDescription($this->faker->text);
+            $ksiazka->setStock($this->faker->numberBetween(1, 15));
 
             $autor = $this->getRandomReference('authors');
             $ksiazka->addAutor($autor);
@@ -53,6 +56,6 @@ class BookFixtures extends AbstractBaseFixtures
 
 public function getDependencies(): array
 {
-    return [AutorFixtures::class, CategoryFixtures::class];
+    return [AuthorFixtures::class, CategoryFixtures::class];
 }
 }

@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\AutorRepository;
+use App\Repository\AuthorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: AutorRepository::class)]
-class Autor
+#[ORM\Entity(repositoryClass: AuthorRepository::class)]
+class Author
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -31,8 +31,8 @@ class Autor
     #[Assert\Country]
     private ?string $country_of_origin = null;
 
-    //#[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'autor')]
-   // private Collection $books;
+    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'autor')]
+    private Collection $books;
 
     public function __construct()
     {
