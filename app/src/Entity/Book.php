@@ -77,7 +77,7 @@ class Book
         return $this;
     }
 
-    public function getTtile(): ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }

@@ -26,6 +26,8 @@ class BookController extends AbstractController
             $books = $this->filters($request, $bookRepository, $categoryRepository, $authorRepository);
         }
 
+        dump($authorRepository->findAll());
+
         return $this->render('book/home.html.twig', [
             'books' => $books,
             'author' => $authorRepository->findAll(),

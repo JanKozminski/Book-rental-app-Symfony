@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
 {% endblock %}
 
@@ -15,7 +16,7 @@
     <div class="">
         <div class="row text-center text-capitalize welcome-header">
             <h1>Book Rental App by J.Kozminski</h1>
-            <p class="lead">{{ book | length }} books available</p>
+            <p class="lead">{{ books | length }} books available</p>
             {% if not app.user %}
                 <div class="alert alert-info" role="alert">
                     <a href="{{ path('app_login') }}">Login</a>, or <a href="{{ path('app_register') }}">create an account</a> to have more options.
@@ -95,7 +96,7 @@
                 <section class="books">
                     <div class="container">
                         <div class="">
-                            {% for val in book %}
+                            {% for val in books %}
                                 <div class="row book mb-3">
                                     <div class="col-3">
                                         <img src="..."
@@ -111,20 +112,20 @@
                                               </span>
                                         </h4>
                                         By:
-{#                                        {% for autor in val.author %}#}
-{#                                            <span> {{ autor }}</span>,#}
-{#                                        {% endfor %}#}
+                                        {% for autor in val.author %}
+                                            <span> {{ autor.name }}</span>,
+                                        {% endfor %}
                                       <p>{{ val.release_date | date('Y-m-d') }}<span class="number_of_pages">{{ val.page_number }} pages </span></p>
 
 
-{#                                        <div class="row">#}
-{#                                            <div class="col-9">#}                                  {# Po usunięciu pól z Kategorii i Autora #}
-{#                                                {% for category in val.category %}#}               {# TODO : zainicjować kategorie i autora w inny sposób #}
-{#                                                    <span class="badge rounded-pill bg-secondary">#}
-{#                                                {{ category ? category : 'category not defined' }}#}
-{#                                              </span>#}
-{#                                                {% endfor %}#}
-{#                                            </div>#}
+                                        <div class="row">
+                                            <div class="col-9">
+                                                {% for category in val.category %}
+                                                    <span class="badge rounded-pill bg-secondary">
+                                                {{ category.name ? category.name : 'category not defined' }}
+                                              </span>
+                                                {% endfor %}
+                                            </div>
                                             <div class="col-3">
                                                 <a href="{{ path('book_show', {'id': val.id}) }}" class="btn btn-outline-dark btn-sm w-100">Show more</a>
                                             </div>
