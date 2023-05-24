@@ -50,8 +50,8 @@ class CategoryyRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->select('partial category.{id, createdAt, updatedAt, title}')
-            ->orderBy('category.updatedAt', 'DESC');
+            ->select('partial categoryy.{id, createdAt, updatedAt, title}')
+            ->orderBy('categoryy.updatedAt', 'DESC');
     }
     /**
      * Save entity.
@@ -73,7 +73,7 @@ class CategoryyRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('category');
+        return $queryBuilder ?? $this->createQueryBuilder('categoryy');
     }
 
 }

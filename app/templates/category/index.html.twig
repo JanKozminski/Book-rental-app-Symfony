@@ -1,41 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    {{ 'title.category_list'|trans }}
-{% endblock %}
+{% block title %}Category index{% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.categoryy_list'|trans }}</h1>
-    {% if categoriess is defined and categoriess|length %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>{{ 'label.id'|trans }}</th>
-                <th>{{ 'label.created_at'|trans }}</th>
-                <th>{{ 'label.updated_at'|trans }}</th>
-                <th>{{ 'label.title'|trans }}</th>
-                <th>{{ 'label.actions'|trans }}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for category in categoriess %}
-                <tr>
-                    <td>{{ category.id }}</td>
-                    <td>{{ category.createdAt|date('Y/m/d') }}</td>
-                    <td>{{ category.updatedAt|date('Y/m/d') }}</td>
-                    <td>{{ category.title }}</td>
-                    <td>
-                        <a href="{{ url('category_show', {id: category.id}) }}" title="{{ 'action.view'|trans }}">
-                            {{ 'action.view'|trans }}
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>
-            {{ 'message.empty_list'|trans }}
-        </p>
+    <h1>Genre index</h1>
+    {#% if app.user and 'ROLE_ADMIN' in app.user.roles %#}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('category_new') }}" class="btn btn-primary mt-3 mb-3 btn-sm"><i class="fas fa-plus-circle"></i> Create new</a>
     {% endif %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for val in category %}
+            <tr>
+                <td>{{ val.id }}</td>
+                <td>{{ val.name }}</td>
+                <td>
+                    <a href="{{ path('category_show', {'id': val.id}) }}" class="btn btn-dark text-light btn-sm"><i class="fas fa-eye"></i></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('category_edit', {'id': val.id}) }}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td> colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
 {% endblock %}

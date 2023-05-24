@@ -27,9 +27,9 @@
             <div class="col-4 filters">
                 <h2 class="mt-2">Filters</h2>
                 <p>Search with a key word</p>
-                <form class="d-flex mt-4" method="post">
+                <form class="d-flex mt-4" method="get">
                     <div class="input-group mb-3">
-                        <input name="keywords" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <input name="keywords" type="text" class="form-control" placeholder="Type in a title" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
                             <i class="fas fa-search"></i>
                         </button>
@@ -37,7 +37,7 @@
                 </form>
                 <hr>
                 <p>Get the books published between two dates</p>
-                <form class="d-flex mt-4" method="post">
+                <form class="d-flex mt-4" method="get">
                     <div class="input-group mb-3">
                         <input  name="date1" type="date" class="form-control" placeholder="Date from" aria-label="Date from">
                         <input  name="date2" type="date" class="form-control" placeholder="Date to" aria-label="Date to" aria-describedby="button-addon2">
@@ -48,7 +48,7 @@
                 </form>
                 <hr>
                 <p>Get the books of an author</p>
-                <form class="d-flex mt-4" method="post">
+                <form class="d-flex mt-4" method="get">
                     <div class="input-group">
                         <select name="author" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                             {% for val in author %}
@@ -63,7 +63,7 @@
                 <hr>
                 <p>Get the books that belongs to a category</p>
 
-                <form class="d-flex mt-4" method="post">
+                <form class="d-flex mt-4" method="get">
                     <div class="input-group">
                         <select name="category" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                             {% for val in category %}
@@ -78,7 +78,7 @@
                 <hr>
 
                 <p>Get the books by their rating</p>
-                <form class="d-flex mt-4" method="post">
+                <form class="d-flex mt-4" method="get">
                     <div class="input-group">
                         <select name="rating" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                             {% for i in 0..20 %}
@@ -115,7 +115,7 @@
                                         {% for autor in val.author %}
                                             <span> {{ autor.name }}</span>,
                                         {% endfor %}
-                                      <p>{{ val.release_date | date('Y-m-d') }}<span class="number_of_pages">{{ val.page_number }} pages </span></p>
+                                      <p>{{ val.release_date | date('Y-m-d') }}<span class="number_of_pages">{{ val.page_number }} pages </span><span class="stock">{{ val.stock }} now available </span> </p>
 
 
                                         <div class="row">

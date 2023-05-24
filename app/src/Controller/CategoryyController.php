@@ -20,7 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 /**
  * Class TaskController.
  */
-#[Route('/category')]
+#[Route('/categoryy')]
 class CategoryyController extends AbstractController
 {
 
@@ -47,7 +47,7 @@ class CategoryyController extends AbstractController
         $categoryy = $categoryyRepository->findAll();
 
         return $this->render(
-            'category/index.html.twig',
+            'categoryy/index.html.twig',
             ['categoriess' => $categoryy]
         );
     }
@@ -68,7 +68,7 @@ class CategoryyController extends AbstractController
     public function show(Categoryy $categoryy): Response
     {
         return $this->render(
-            'category/show.html.twig',
+            'categoryy/show.html.twig',
             ['categoryy' => $categoryy]
         );
     }
@@ -96,7 +96,7 @@ class CategoryyController extends AbstractController
         }
 
         return $this->render(
-            'category/create.html.twig',
+            'categoryy/create.html.twig',
             ['form' => $form->createView()]
         );
     }
@@ -133,10 +133,10 @@ class CategoryyController extends AbstractController
         }
 
         return $this->render(
-            'category/edit.html.twig',
+            'categoryy/edit.html.twig',
             [
                 'form' => $form->createView(),
-                'category' => $category,
+                'categoryy' => $category,
             ]
         );
     }
@@ -169,10 +169,10 @@ class CategoryyController extends AbstractController
         }
 
         return $this->render(
-            'category/delete.html.twig',
+            'categoryy/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'category' => $category,
+                'categoryy' => $category,
             ]
         );
     }

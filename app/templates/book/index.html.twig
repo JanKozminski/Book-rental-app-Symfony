@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book index{% endblock %}
+
+{% block body %}
+    <h1>Book index</h1>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('book_new') }}" class="btn btn-primary mt-3 mb-3 btn-sm"> <i class="fas fa-plus-circle"></i> Create new</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Isbn</th>
+            <th>Title</th>
+            <th>Number of pages</th>
+            <th>Release date</th>
+            <th>Rating</th>
+             <th>Description</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for val in book %}
+            <tr>
+                <td>{{ val.id }}</td>
+                <td>{{ val.isbn }}</td>
+                <td>{{ val.title }}</td>
+                <td>{{ val.page_number }}</td>
+                <td>{{ val.release_date ? val.release_date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ val.rating }}</td>
+
+                <td>{{ livre.description }}</td>
+
+                <td>
+                    <a href="{{ path('book_show', {'id': val.id}) }}" class="btn btn-dark text-light btn-sm"> <i class="fas fa-eye"></i></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('book_edit', {'id': val.id}) }} " class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td> colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

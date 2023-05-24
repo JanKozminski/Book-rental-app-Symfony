@@ -8,6 +8,7 @@ use App\Repository\AuthorRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,11 +23,9 @@ class BookController extends AbstractController
     public function home(Request $request, BookRepository $bookRepository, CategoryRepository $categoryRepository, AuthorRepository $authorRepository): Response
     {
         $books = $bookRepository->findAll();
-        if ($request->isMethod('POST')) {
+        if ($request->isMethod('GET')) {
             $books = $this->filters($request, $bookRepository, $categoryRepository, $authorRepository);
         }
-
-        dump($authorRepository->findAll());
 
         return $this->render('book/home.html.twig', [
             'books' => $books,
@@ -39,17 +38,17 @@ class BookController extends AbstractController
     {
 
         if ($request->get('keywords')) {
-            return $bookRepository->findByTitleField($request->get('keywords'));
-        } else if ($request->get('rating')) {
-            return $bookRepository->findByRatingField($request->get('rating'));
-        } else if ($request->get('date1') && $request->get('date2')) {
-            return $bookRepository->findByDateField($request->get('date1'), $request->get('date2'));
-        } else if ($request->get('author')) {
-            $id = $request->get("author");
+            return $bookRepository->findByTitleField($request->query->get('keywords'));
+        } else if ($request->query->get('rating')) {
+            return $bookRepository->findByRatingField($request->query->get('rating'));
+        } else if ($request->query->get('date1') && $request->query->get('date2')) {
+            return $bookRepository->findByDateField($request->query->get('date1'), $request->query->get('date2'));
+        } else if ($request->query->get('author')) {
+            $id = $request->query->get("author");
             $author = $authorRepository->find($id);
             return $author->getBooks();
-        } else if ($request->get('category')) {
-            $id = $request->get("category");
+        } else if ($request->query->get('category')) {
+            $id = $request->query->get("category");
             $category = $categoryRepository->find($id);
             return $category->getBooks();
         } else {
@@ -58,6 +57,7 @@ class BookController extends AbstractController
 
     }
     #[Route('/book', name: 'book_index', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function index(Request $request, BookRepository $bookRepository): Response
     {
 
@@ -66,6 +66,7 @@ class BookController extends AbstractController
         ]);
     }
     #[Route('/book/{id}', name: 'book_show', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function show(Book $book): Response
     {
         return $this->render('book/show.html.twig', [
