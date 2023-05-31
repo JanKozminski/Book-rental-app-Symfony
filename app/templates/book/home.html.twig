@@ -112,8 +112,8 @@
                                               </span>
                                         </h4>
                                         By:
-                                        {% for autor in val.author %}
-                                            <span> {{ autor.name }}</span>,
+                                        {% for val in val.author %}
+                                            <span> {{ val.name }}</span>,
                                         {% endfor %}
                                       <p>{{ val.release_date | date('Y-m-d') }}<span class="number_of_pages">{{ val.page_number }} pages </span><span class="stock">{{ val.stock }} now available </span> </p>
 

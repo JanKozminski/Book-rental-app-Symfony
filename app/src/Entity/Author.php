@@ -25,13 +25,13 @@ class Author
     private ?string $sex = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $birth_date = null;
+    public ?\DateTimeInterface $birth_date = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\Country]
-    private ?string $country_of_origin = null;
+    public ?string $country_of_origin = null;
 
-    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'autor')]
+    #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author')]
     private Collection $books;
 
     public function __construct()
@@ -100,18 +100,18 @@ class Author
         return $this->books;
     }
 
-    public function addBooks(Book $ksiazki): self
+    public function addBooks(Book $books): self
     {
-        if (!$this->books->contains($ksiazki)) {
-            $this->books->add($ksiazki);
+        if (!$this->books->contains($books)) {
+            $this->books->add($books);
         }
 
         return $this;
     }
 
-    public function removeBooks(Book $ksiazki): self
+    public function removeBooks(Book $books): self
     {
-        $this->books->removeElement($ksiazki);
+        $this->books->removeElement($books);
 
         return $this;
     }

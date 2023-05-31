@@ -40,7 +40,7 @@ class Book
     private ?int $page_number = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
+    public ?string $description = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $release_date = null;
@@ -184,20 +184,20 @@ class Book
         return $this->author;
     }
 
-    public function addAutor(Author $autor): self
+    public function addAuthor(Author $author): self
     {
-        if (!$this->author->contains($autor)) {
-            $this->author->add($autor);
-       //     $autor->addBooks($this);
+        if (!$this->author->contains($author)) {
+            $this->author->add($author);
+            $author->addBooks($this);
         }
 
         return $this;
     }
 
-    public function removeAutor(Author $autor): self
+    public function removeAuthor(Author $author): self
     {
-        if ($this->author->removeElement($autor)) {
-            $autor->removeBooks($this);
+        if ($this->author->removeElement($author)) {
+            $author->removeBooks($this);
         }
 
         return $this;

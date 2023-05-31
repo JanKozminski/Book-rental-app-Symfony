@@ -23,4 +23,12 @@ class AuthorController extends AbstractController
             'author' => $authorRepository->findAll(),
         ]);
     }
+
+    #[Route('/{id}', name: 'author_show', methods: ['GET'])]
+    public function show(Author $author): Response
+    {
+        return $this->render('author/show.html.twig', [
+            'author' => $author,
+        ]);
+    }
 }

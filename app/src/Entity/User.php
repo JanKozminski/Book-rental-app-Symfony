@@ -7,6 +7,8 @@ namespace App\Entity;
 
 use App\Entity\Enum\UserRole;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -55,8 +57,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string|null
      */
     #[ORM\Column(type: 'string')]
-    #[Assert\NotBlank]
     private ?string $password;
+
+//    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Rental::class, orphanRemoval: true)]
+//    private Collection $rentals;
+
+    public function __construct()
+    {
+        $this->rentals = new ArrayCollection();
+    }
 
     /**
      * Getter for id.
@@ -179,4 +188,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    /**
+     * @return Collection<int, Rental>
+     */
+//    public function getRentals(): Collection
+//    {
+//        return $this->rentals;
+//    }
+//
+//    public function addRental(Rental $rental): self
+//    {
+//        if (!$this->rentals->contains($rental)) {
+//            $this->rentals->add($rental);
+//            $rental->setUserId($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removeRental(Rental $rental): self
+//    {
+//        if ($this->rentals->removeElement($rental)) {
+//            // set the owning side to null (unless already changed)
+//            if ($rental->getUserId() === $this) {
+//                $rental->setUserId(null);
+//            }
+//        }
+//
+//        return $this;
+//    }
 }

@@ -39,7 +39,7 @@ class CategoryyController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(
-        name: 'category_index',
+        name: 'categoryy_index',
         methods: 'GET'
     )]
     public function index(CategoryyRepository $categoryyRepository): Response
@@ -61,7 +61,7 @@ class CategoryyController extends AbstractController
      */
     #[Route(
         '/{id}',
-        name: 'category_show',
+        name: 'categoryy_show',
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET',
     )]

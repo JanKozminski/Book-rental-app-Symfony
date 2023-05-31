@@ -18,7 +18,7 @@
 <main role="main" class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ path('book_home_page') }}">BookStore</a>
+            <a class="navbar-brand" href="{{ path('book_home_page') }}">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,10 +31,13 @@
                             <a class="nav-link" href="{{ path('book_index') }}">Books</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('book_index') }}">Authors</a>
+                            <a class="nav-link" href="{{ path('author_index') }}">Authors</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('book_index') }}">Categories</a>
+                            <a class="nav-link" href="{{ path('category_index') }}">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('book_index') }}">MyRentals</a>
                         </li>
                     {% endif %}
                 </ul>
