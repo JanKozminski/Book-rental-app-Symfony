@@ -24,8 +24,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -34,13 +32,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Email.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Assert\NotBlank]
     #[Assert\Email]
-
     private ?string $email;
 
     /**
@@ -53,14 +48,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Password.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string')]
     private ?string $password;
 
-//    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Rental::class, orphanRemoval: true)]
-//    private Collection $rentals;
+    //    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Rental::class, orphanRemoval: true)]
+    //    private Collection $rentals;
 
     public function __construct()
     {
@@ -189,7 +182,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    /**
+    /*
      * @return Collection<int, Rental>
      */
 //    public function getRentals(): Collection

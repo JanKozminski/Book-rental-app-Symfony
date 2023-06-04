@@ -81,8 +81,8 @@
                 <form class="d-flex mt-4" method="get">
                     <div class="input-group">
                         <select name="rating" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                            {% for i in 0..20 %}
-                                <option value="{{ i }}">{{ i }} / 20</option>
+                            {% for i in 0..10 %}
+                                <option value="{{ i }}">{{ i }} / 10</option>
                             {% endfor %}
                         </select>
                         <button class="btn btn-outline-secondary" type="submit">
@@ -129,6 +129,11 @@
                                             <div class="col-3">
                                                 <a href="{{ path('book_show', {'id': val.id}) }}" class="btn btn-outline-dark btn-sm w-100">Show more</a>
                                             </div>
+                                            {% if is_granted('ROLE_USER') %}
+                                            <div class="col-3">
+                                                <a href="{{ path('book_show', {'id': val.id}) }}" class="btn btn-outline-dark btn-sm w-100">Rent</a>
+                                            </div>
+                                            {% endif %}
                                         </div>
 
 

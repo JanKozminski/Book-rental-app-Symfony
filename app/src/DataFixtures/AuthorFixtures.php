@@ -5,9 +5,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Book;
 use App\Entity\Author;
-use DateTimeImmutable;
 
 /**
  * Class AuthorFixtures.
@@ -26,20 +24,27 @@ class AuthorFixtures extends AbstractBaseFixtures
     {
         $this->createMany(20, 'authors', function (int $i) {
             $autor = new Author();
-            $sex = $this->faker->randomElement( $array = ['male','female']);
+            $sex = $this->faker->randomElement($array = ['male', 'female']);
             $autor->setName($this->faker->unique()->name($sex));
-            if($sex=='male') $autor->setSex('M');
-            if($sex=='female') $autor->setSex('F');
+            if ('male' == $sex) {
+                $autor->setSex('M');
+            }
+            if ('female' == $sex) {
+                $autor->setSex('F');
+            }
             $autor->setBirthdate(
-                DateTimeImmutable::createFromMutable(
-                    $this->faker->dateTimeBetween('-156324 days', '-1 days'))
+                \DateTimeImmutable::createFromMutable(
+                    $this->faker->dateTimeBetween('-156324 days', '-1 days')
+                )
             );
             $autor->setCountryoforigin($this->faker->country);
+
             return $autor;
         });
 
         $this->manager->flush();
     }
+
     public function getDependencies(): array
     {
         return [BookFixtures::class];

@@ -8,7 +8,6 @@ namespace App\Controller;
 use App\Entity\Categoryy;
 use App\Form\Type\CategoryType;
 use App\Repository\CategoryyRepository;
-use App\Repository\TaskRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,14 +22,16 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/categoryy')]
 class CategoryyController extends AbstractController
 {
-
     private CategoryyServiceInterface $categoryService;
 
     private TranslatorInterface $translator;
-    public function __construct(CategoryyServiceInterface $categoryyService, TranslatorInterface $translator){
+
+    public function __construct(CategoryyServiceInterface $categoryyService, TranslatorInterface $translator)
+    {
         $this->categoryService = $categoryyService;
         $this->translator = $translator;
     }
+
     /**
      * Index action.
      *
@@ -75,7 +76,7 @@ class CategoryyController extends AbstractController
 
     #[Route(
         '/create',
-        name: 'category_create',
+        name: 'categoryy_create',
         methods: 'GET|POST',
     )]
     public function create(Request $request): Response
@@ -100,15 +101,16 @@ class CategoryyController extends AbstractController
             ['form' => $form->createView()]
         );
     }
+
     /**
      * Edit action.
      *
-     * @param Request  $request  HTTP request
+     * @param Request   $request  HTTP request
      * @param Categoryy $category Category entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/edit', name: 'category_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    #[Route('/{id}/edit', name: 'categoryy_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Categoryy $category): Response
     {
         $form = $this->createForm(
@@ -116,7 +118,7 @@ class CategoryyController extends AbstractController
             $category,
             [
                 'method' => 'PUT',
-                'action' => $this->generateUrl('category_edit', ['id' => $category->getId()]),
+                'action' => $this->generateUrl('categoryy_edit', ['id' => $category->getId()]),
             ]
         );
         $form->handleRequest($request);
@@ -129,7 +131,7 @@ class CategoryyController extends AbstractController
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('categoryy_index');
         }
 
         return $this->render(
@@ -140,20 +142,21 @@ class CategoryyController extends AbstractController
             ]
         );
     }
+
     /**
      * Delete action.
      *
-     * @param Request  $request  HTTP request
+     * @param Request   $request  HTTP request
      * @param Categoryy $category Category entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
+    #[Route('/{id}/delete', name: 'categoryy_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Categoryy $category): Response
     {
         $form = $this->createForm(FormType::class, $category, [
             'method' => 'DELETE',
-            'action' => $this->generateUrl('category_delete', ['id' => $category->getId()]),
+            'action' => $this->generateUrl('categoryy_delete', ['id' => $category->getId()]),
         ]);
         $form->handleRequest($request);
 
@@ -165,7 +168,7 @@ class CategoryyController extends AbstractController
                 $this->translator->trans('message.deleted_successfully')
             );
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('categoryy_index');
         }
 
         return $this->render(

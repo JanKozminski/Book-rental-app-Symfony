@@ -70,7 +70,6 @@ class TaskRepository extends ServiceEntityRepository
         return $queryBuilder ?? $this->createQueryBuilder('task');
     }
 
-
 //    /**
 //     * @return Task[] Returns an array of Task objects
 //     */

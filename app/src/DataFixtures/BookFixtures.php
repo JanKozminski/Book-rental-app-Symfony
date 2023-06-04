@@ -7,8 +7,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Book;
-use App\Entity\Author;
-use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
@@ -30,10 +28,10 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             $ksiazka = new Book();
             $ksiazka->setTitle($this->faker->title);
             $ksiazka->setIsbn(
-                    $this->faker->isbn13()
-                );
+                $this->faker->isbn13()
+            );
             $ksiazka->setRelease_date(
-                DateTimeImmutable::createFromMutable(
+                \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-156324 days', '-1 days')
                 )
             );

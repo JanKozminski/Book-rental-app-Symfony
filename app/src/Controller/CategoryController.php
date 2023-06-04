@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\Type\CategoryType;
 use App\Entity\Category;
-use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -23,6 +23,25 @@ class CategoryController extends AbstractController
             'category' => $categoryRepository->findAll(),
         ]);
     }
+    #[Route('/new', name: 'category_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($category);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('category/new.html.twig', [
+            'category' => $category,
+            'form' => $form,
+        ]);
+    }
 
     #[Route('/{id}', name: 'category_show', methods: ['GET'])]
     public function show(Category $category): Response
@@ -30,5 +49,33 @@ class CategoryController extends AbstractController
         return $this->render('category/show.html.twig', [
             'category' => $category,
         ]);
+    }
+
+    #[Route('/{id}/edit', name: 'category_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Category $category, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('category/edit.html.twig', [
+            'category' => $category,
+            'form' => $form,
+        ]);
+    }
+    #[Route('/{id}/delete', name: 'category_delete', methods: ['POST'])]
+    public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($category);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
     }
 }

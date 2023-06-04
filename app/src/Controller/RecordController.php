@@ -34,9 +34,10 @@ class RecordController extends AbstractController
      * ...
      */
     #[Route('/{id}', name: 'record_view', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
-    public function view(RecordRepository $recordRepository,int $id): Response
+    public function view(RecordRepository $recordRepository, int $id): Response
     {
         $record = $recordRepository->findOneById($id);
+
         return $this->render(
             'record/view.html.twig',
             ['record' => $record]

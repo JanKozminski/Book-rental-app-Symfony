@@ -2,14 +2,15 @@
 /**
  * Categoryy repository.
  */
+
 namespace App\Repository;
+
 use App\Entity\Categoryy;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
-#fjsd
+
+// fjsd
 /**
  * @method Categoryy|null find($id, $lockMode = null, $lockVersion = null)
  * @method Categoryy|null findOneBy(array $criteria, array $orderBy = null)
@@ -18,7 +19,6 @@ use Doctrine\Persistence\ManagerRegistry;
  *
  * @extends ServiceEntityRepository<Categoryy>
  */
-
 class CategoryyRepository extends ServiceEntityRepository
 {
     /**
@@ -53,6 +53,7 @@ class CategoryyRepository extends ServiceEntityRepository
             ->select('partial categoryy.{id, createdAt, updatedAt, title}')
             ->orderBy('categoryy.updatedAt', 'DESC');
     }
+
     /**
      * Save entity.
      *
@@ -75,7 +76,6 @@ class CategoryyRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('categoryy');
     }
-
 }
 
 //    /**
@@ -102,4 +102,3 @@ class CategoryyRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-

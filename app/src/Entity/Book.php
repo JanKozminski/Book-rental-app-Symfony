@@ -37,13 +37,13 @@ class Book
 
     #[ORM\Column]
     #[Assert\Positive]
-    private ?int $page_number = null;
+    public ?int $page_number = null;
 
     #[ORM\Column(type: Types::TEXT)]
     public ?string $description = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $release_date = null;
+    public ?\DateTimeInterface $release_date = null;
 
     #[ORM\Column]
     private ?int $stock = null;
@@ -161,7 +161,7 @@ class Book
     {
         if (!$this->category->contains($kategorium)) {
             $this->category->add($kategorium);
-           // $kategorium->addBooks($this);
+            // $kategorium->addBooks($this);
         }
 
         return $this;

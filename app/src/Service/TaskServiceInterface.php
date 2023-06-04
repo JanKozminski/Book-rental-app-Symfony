@@ -20,5 +20,4 @@ interface TaskServiceInterface
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
-
 }

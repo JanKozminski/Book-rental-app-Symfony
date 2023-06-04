@@ -23,6 +23,6 @@
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-secondary mt-3 mb-3 btn-sm"><i class="fas fa-edit"></i> edit</a>
 
-         {{ include('genre/_delete_form.html.twig') }}
+         {{ include('category/_delete_form.html.twig') }}
     {% endif %}
 {% endblock %}

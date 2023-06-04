@@ -39,6 +39,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('book_index') }}">MyRentals</a>
                         </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('book_index') }}">ManageRentals</a>
+                        </li>
+                    {% endif %}
                     {% endif %}
                 </ul>
 

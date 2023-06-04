@@ -38,6 +38,7 @@ class BookRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
     public function findByTitleField($value)
     {
         /*
@@ -57,11 +58,9 @@ class BookRepository extends ServiceEntityRepository
             FROM App\Entity\Book t
             WHERE t.title LIKE :val
             ORDER BY t.release_date ASC"
-        )->setParameter('val', "%".$value."%");
+        )->setParameter('val', '%'.$value.'%');
 
-        // returns an array of Product objects
         return $query->getResult();
-
     }
 
     public function findByRatingField($value)
@@ -72,9 +71,10 @@ class BookRepository extends ServiceEntityRepository
             ->orderBy('t.id', 'ASC')
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
-    public function findByDateField($date1, $date2) //takes date
+
+    public function findByDateField($date1, $date2) // takes date
     {
         return $this->createQueryBuilder('t')
             ->where('t.release_date >= :date1')
@@ -85,9 +85,8 @@ class BookRepository extends ServiceEntityRepository
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
-
 
 //    /**
 //     * @return Book[] Returns an array of Book objects
