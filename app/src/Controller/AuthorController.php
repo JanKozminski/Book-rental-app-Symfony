@@ -23,6 +23,7 @@ class AuthorController extends AbstractController
             'author' => $authorRepository->findAll(),
         ]);
     }
+
     #[Route('/new', name: 'author_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -68,6 +69,7 @@ class AuthorController extends AbstractController
             'form' => $form,
         ]);
     }
+
     #[Route('/{id}/delete', name: 'author_delete', methods: ['POST'])]
     public function delete(Request $request, Author $author, EntityManagerInterface $entityManager): Response
     {

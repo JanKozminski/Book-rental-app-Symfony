@@ -14,21 +14,21 @@ class CategoryyService implements CategoryyServiceInterface
         $this->categoryyRepository = $categoryRepository;
     }
 
-  public function save(Categoryy $category): void
-  {
-      if (null == $category->getId()) {
-          $category->setCreatedAt(new \DateTimeImmutable());
-      }
-      $category->setUpdatedAt(new \DateTimeImmutable());
+    public function save(Categoryy $category): void
+    {
+        if (null == $category->getId()) {
+            $category->setCreatedAt(new \DateTimeImmutable());
+        }
+        $category->setUpdatedAt(new \DateTimeImmutable());
 
-      $this->categoryyRepository->save($category);
-  }
+        $this->categoryyRepository->save($category);
+    }
 
     /**
-       * Delete entity.
-       *
-       * @param Categoryy $category Category entity
-       */
+     * Delete entity.
+     *
+     * @param Categoryy $category Category entity
+     */
     public function delete(Categoryy $category): void
     {
         $this->_em->remove($category);

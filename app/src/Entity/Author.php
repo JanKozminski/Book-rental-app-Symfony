@@ -25,11 +25,11 @@ class Author
     private ?string $sex = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    public ?\DateTimeInterface $birth_date = null;
+    private ?\DateTimeInterface $birthDate = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\Country]
-    public ?string $country_of_origin = null;
+    public ?string $countryOfOrigin = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author')]
     private Collection $books;
@@ -70,26 +70,24 @@ class Author
 
     public function getBirthdate(): ?\DateTimeInterface
     {
-        return $this->birth_date;
+        return $this->birthDate;
     }
 
-    public function setBirthdate(\DateTimeInterface $birth_date): self
+    public function setBirthdate(\DateTimeInterface $birthDate): self
     {
-        $this->birth_date = $birth_date;
+        $this->birthDate = $birthDate;
 
         return $this;
     }
 
-    public function getCountryoforigin(): ?string
+    public function getCountryOfOrigin(): ?string
     {
-        return $this->country_of_origin;
+        return $this->countryOfOrigin;
     }
 
-    public function setCountryoforigin(string $country_of_origin): self
+    public function setCountryOfOrigin(string $countryOfOrigin): void
     {
-        $this->country_of_origin = $country_of_origin;
-
-        return $this;
+        $this->countryOfOrigin = $countryOfOrigin;
     }
 
     /**

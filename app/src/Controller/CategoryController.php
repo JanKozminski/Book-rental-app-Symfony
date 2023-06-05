@@ -23,6 +23,7 @@ class CategoryController extends AbstractController
             'category' => $categoryRepository->findAll(),
         ]);
     }
+
     #[Route('/new', name: 'category_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -68,6 +69,7 @@ class CategoryController extends AbstractController
             'form' => $form,
         ]);
     }
+
     #[Route('/{id}/delete', name: 'category_delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {

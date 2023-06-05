@@ -1,0 +1,450 @@
+
+FILE: /home/wwwroot/app/src/Service/CategoryyService.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AND 2 WARNINGS AFFECTING 5 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+  8 | ERROR   | Missing doc comment for class CategoryyService
+ 12 | ERROR   | Missing doc comment for function __construct()
+ 17 | ERROR   | Missing doc comment for function save()
+ 19 | WARNING | Always use identical comparison unless you need type juggling
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Service/CategoryyServiceInterface.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 14 | ERROR   | Missing doc comment for function save()
+ 16 | ERROR   | Missing doc comment for function delete()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/LoginController.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 10 | ERROR   | Missing doc comment for class LoginController
+ 12 | ERROR   | Doc comment for parameter "$authenticationUtils" missing
+ 14 | ERROR   | Missing @return tag in function comment
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/SecurityController.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 10 | ERROR   | Missing doc comment for class SecurityController
+ 13 | ERROR   | Missing doc comment for function login()
+ 28 | ERROR   | Missing doc comment for function logout()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/CategoryyController.php
+----------------------------------------------------------------------
+FOUND 2 ERRORS AFFECTING 2 LINES
+----------------------------------------------------------------------
+ 29 | ERROR | Missing doc comment for function __construct()
+ 82 | ERROR | Missing doc comment for function create()
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/TaskController.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 26 | ERROR | Doc comment for parameter "$taskService" missing
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/RegistrationController.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 16 | ERROR   | Missing doc comment for class RegistrationController
+ 19 | ERROR   | Missing doc comment for function register()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/RecordController.php
+----------------------------------------------------------------------
+FOUND 5 ERRORS AFFECTING 4 LINES
+----------------------------------------------------------------------
+ 19 | ERROR | Doc comment for parameter "$recordRepository" missing
+ 21 | ERROR | Missing @return tag in function comment
+ 33 | ERROR | Doc comment for parameter "$recordRepository" missing
+ 33 | ERROR | Doc comment for parameter "$id" missing
+ 35 | ERROR | Missing @return tag in function comment
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/CategoryController.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 17 | ERROR   | Missing doc comment for class CategoryController
+ 20 | ERROR   | Missing doc comment for function index()
+ 28 | ERROR   | Missing doc comment for function new()
+ 48 | ERROR   | Missing doc comment for function show()
+ 56 | ERROR   | Missing doc comment for function edit()
+ 74 | ERROR   | Missing doc comment for function delete()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/AuthorController.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 17 | ERROR   | Missing doc comment for class AuthorController
+ 20 | ERROR   | Missing doc comment for function index()
+ 28 | ERROR   | Missing doc comment for function new()
+ 48 | ERROR   | Missing doc comment for function show()
+ 56 | ERROR   | Missing doc comment for function edit()
+ 74 | ERROR   | Missing doc comment for function delete()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Controller/BookController.php
+------------------------------------------------------------------------------------------------------------------------
+FOUND 10 ERRORS AND 1 WARNING AFFECTING 10 LINES
+------------------------------------------------------------------------------------------------------------------------
+   3 | WARNING | The license block has to be present at the top
+     |         |                 of every PHP file, before the namespace
+  19 | ERROR   | Missing doc comment for class BookController
+  22 | ERROR   | Missing doc comment for function home()
+  36 | ERROR   | Missing doc comment for function filters()
+  39 | ERROR   | Do not use else, elseif, break after if and case conditions which return or throw something
+  61 | ERROR   | Declare public methods first,then protected ones and finally private ones
+  61 | ERROR   | Missing doc comment for function index()
+  69 | ERROR   | Missing doc comment for function new()
+  90 | ERROR   | Missing doc comment for function show()
+  98 | ERROR   | Missing doc comment for function delete()
+ 110 | ERROR   | You must use "/**" style comments for a function comment
+------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/CategoryType.php
+-----------------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 4 LINES
+-----------------------------------------------------------------------------------
+ 15 | ERROR | [ ] Missing doc comment for class CategoryType
+ 17 | ERROR | [ ] Missing doc comment for function buildForm()
+ 24 | ERROR | [x] Line indented incorrectly; expected 16 spaces, found 12
+ 24 | ERROR | [x] Closing brace indented incorrectly; expected 16 spaces, found 12
+ 24 | ERROR | [x] Closing brace indented incorrectly; expected 16 spaces, found 12
+ 28 | ERROR | [ ] Missing doc comment for function configureOptions()
+-----------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/RegistrationType.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 15 | ERROR   | Missing doc comment for class RegistrationType
+ 17 | ERROR   | Missing doc comment for function buildForm()
+ 46 | ERROR   | Missing doc comment for function configureOptions()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/BookType.php
+---------------------------------------------------------------------------------------------------------------------------
+FOUND 10 ERRORS AND 1 WARNING AFFECTING 7 LINES
+---------------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | [ ] The license block has to be present at the top
+    |         |                     of every PHP file, before the namespace
+ 15 | ERROR   | [ ] Missing doc comment for class BookType
+ 17 | ERROR   | [ ] Missing doc comment for function buildForm()
+ 30 | ERROR   | [x] Line indented incorrectly; expected 16 spaces, found 12
+ 30 | ERROR   | [x] Closing brace indented incorrectly; expected 16 spaces, found 12
+ 30 | ERROR   | [x] Closing brace indented incorrectly; expected 16 spaces, found 12
+ 34 | ERROR   | [x] Line indented incorrectly; expected 20 spaces, found 12
+ 34 | ERROR   | [x] Closing brace indented incorrectly; expected 20 spaces, found 12
+ 34 | ERROR   | [x] Closing brace indented incorrectly; expected 20 spaces, found 12
+ 38 | ERROR   | [ ] Missing doc comment for function configureOptions()
+ 45 | ERROR   | [ ] Missing doc comment for function getBlockPrefix()
+---------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Form/Type/AuthorType.php
+---------------------------------------------------------------------------------------------------------------------------
+FOUND 6 ERRORS AND 1 WARNING AFFECTING 5 LINES
+---------------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | [ ] The license block has to be present at the top
+    |         |                     of every PHP file, before the namespace
+ 13 | ERROR   | [ ] Missing doc comment for class AuthorType
+ 15 | ERROR   | [ ] Missing doc comment for function buildForm()
+ 25 | ERROR   | [x] Line indented incorrectly; expected 16 spaces, found 12
+ 25 | ERROR   | [x] Closing brace indented incorrectly; expected 16 spaces, found 12
+ 25 | ERROR   | [x] Closing brace indented incorrectly; expected 16 spaces, found 12
+ 29 | ERROR   | [ ] Missing doc comment for function configureOptions()
+---------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Author.php
+------------------------------------------------------------------------------------------------------------------------
+FOUND 23 ERRORS AND 1 WARNING AFFECTING 20 LINES
+------------------------------------------------------------------------------------------------------------------------
+   3 | WARNING | The license block has to be present at the top
+     |         |                 of every PHP file, before the namespace
+  13 | ERROR   | Missing doc comment for class Author
+  28 | ERROR   | Member variable "birth_date" is not in valid camel caps format
+  32 | ERROR   | Member variable "country_of_origin" is not in valid camel caps format
+  37 | ERROR   | Missing doc comment for function __construct()
+  42 | ERROR   | Missing doc comment for function getId()
+  47 | ERROR   | Missing doc comment for function getName()
+  52 | ERROR   | Missing doc comment for function setName()
+  59 | ERROR   | Missing doc comment for function getSex()
+  64 | ERROR   | Missing doc comment for function setSex()
+  71 | ERROR   | Missing doc comment for function getBirthdate()
+  73 | ERROR   | Variable "birth_date" is not in valid camel caps format
+  76 | ERROR   | Missing doc comment for function setBirthdate()
+  76 | ERROR   | Variable "birth_date" is not in valid camel caps format
+  78 | ERROR   | Variable "birth_date" is not in valid camel caps format
+  78 | ERROR   | Variable "birth_date" is not in valid camel caps format
+  83 | ERROR   | Missing doc comment for function getCountryoforigin()
+  85 | ERROR   | Variable "country_of_origin" is not in valid camel caps format
+  88 | ERROR   | Missing doc comment for function setCountryoforigin()
+  88 | ERROR   | Variable "country_of_origin" is not in valid camel caps format
+  90 | ERROR   | Variable "country_of_origin" is not in valid camel caps format
+  90 | ERROR   | Variable "country_of_origin" is not in valid camel caps format
+ 103 | ERROR   | Missing doc comment for function addBooks()
+ 112 | ERROR   | Missing doc comment for function removeBooks()
+------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Task.php
+----------------------------------------------------------------------
+FOUND 2 ERRORS AFFECTING 2 LINES
+----------------------------------------------------------------------
+ 128 | ERROR | Missing doc comment for function getCategory()
+ 133 | ERROR | Missing doc comment for function setCategory()
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/User.php
+------------------------------------------------------------------------
+FOUND 2 ERRORS AFFECTING 2 LINES
+------------------------------------------------------------------------
+  58 | ERROR | You must use "/**" style comments for a function comment
+ 168 | ERROR | Missing @return tag in function comment
+------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Rental.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 25 ERRORS AND 1 WARNING AFFECTING 20 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+  9 | ERROR   | Missing doc comment for class Rental
+ 17 | ERROR   | Member variable "e_mail" is not in valid camel caps format
+ 24 | ERROR   | Member variable "user_id" is not in valid camel caps format
+ 28 | ERROR   | Member variable "book_id" is not in valid camel caps format
+ 30 | ERROR   | Missing doc comment for function getId()
+ 35 | ERROR   | Missing doc comment for function getEMail()
+ 37 | ERROR   | Variable "e_mail" is not in valid camel caps format
+ 40 | ERROR   | Missing doc comment for function setEMail()
+ 40 | ERROR   | Variable "e_mail" is not in valid camel caps format
+ 42 | ERROR   | Variable "e_mail" is not in valid camel caps format
+ 42 | ERROR   | Variable "e_mail" is not in valid camel caps format
+ 47 | ERROR   | Missing doc comment for function getComment()
+ 52 | ERROR   | Missing doc comment for function setComment()
+ 59 | ERROR   | Missing doc comment for function getUserId()
+ 61 | ERROR   | Variable "user_id" is not in valid camel caps format
+ 64 | ERROR   | Missing doc comment for function setUserId()
+ 64 | ERROR   | Variable "user_id" is not in valid camel caps format
+ 66 | ERROR   | Variable "user_id" is not in valid camel caps format
+ 66 | ERROR   | Variable "user_id" is not in valid camel caps format
+ 71 | ERROR   | Missing doc comment for function getBookId()
+ 73 | ERROR   | Variable "book_id" is not in valid camel caps format
+ 76 | ERROR   | Missing doc comment for function setBookId()
+ 76 | ERROR   | Variable "book_id" is not in valid camel caps format
+ 78 | ERROR   | Variable "book_id" is not in valid camel caps format
+ 78 | ERROR   | Variable "book_id" is not in valid camel caps format
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Category.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 7 ERRORS AND 1 WARNING AFFECTING 8 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 11 | ERROR   | Missing doc comment for class Category
+ 24 | ERROR   | Missing doc comment for function __construct()
+ 29 | ERROR   | Missing doc comment for function getId()
+ 34 | ERROR   | Missing doc comment for function getName()
+ 39 | ERROR   | Missing doc comment for function setName()
+ 54 | ERROR   | Missing doc comment for function addBooks()
+ 63 | ERROR   | Missing doc comment for function removeBooks()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Entity/Book.php
+------------------------------------------------------------------------------------------------------------------------
+FOUND 35 ERRORS AND 1 WARNING AFFECTING 28 LINES
+------------------------------------------------------------------------------------------------------------------------
+   3 | WARNING | The license block has to be present at the top
+     |         |                 of every PHP file, before the namespace
+  13 | ERROR   | Missing doc comment for class Book
+  40 | ERROR   | Member variable "page_number" is not in valid camel caps format
+  46 | ERROR   | Member variable "release_date" is not in valid camel caps format
+  57 | ERROR   | Missing doc comment for function __construct()
+  63 | ERROR   | Missing doc comment for function getId()
+  68 | ERROR   | Missing doc comment for function getIsbn()
+  73 | ERROR   | Missing doc comment for function setIsbn()
+  80 | ERROR   | Missing doc comment for function getTitle()
+  85 | ERROR   | Missing doc comment for function setTitle()
+  92 | ERROR   | Missing doc comment for function getRating()
+  97 | ERROR   | Missing doc comment for function setRating()
+ 104 | ERROR   | Missing doc comment for function getPage_number()
+ 104 | ERROR   | Method name "Book::getPage_number" is not in camel caps format
+ 106 | ERROR   | Variable "page_number" is not in valid camel caps format
+ 109 | ERROR   | Missing doc comment for function setPage_number()
+ 109 | ERROR   | Method name "Book::setPage_number" is not in camel caps format
+ 109 | ERROR   | Variable "page_number" is not in valid camel caps format
+ 111 | ERROR   | Variable "page_number" is not in valid camel caps format
+ 111 | ERROR   | Variable "page_number" is not in valid camel caps format
+ 116 | ERROR   | Missing doc comment for function getDescripton()
+ 121 | ERROR   | Missing doc comment for function setDescription()
+ 128 | ERROR   | Missing doc comment for function getRelease_date()
+ 128 | ERROR   | Method name "Book::getRelease_date" is not in camel caps format
+ 130 | ERROR   | Variable "release_date" is not in valid camel caps format
+ 133 | ERROR   | Missing doc comment for function setRelease_date()
+ 133 | ERROR   | Method name "Book::setRelease_date" is not in camel caps format
+ 133 | ERROR   | Variable "release_date" is not in valid camel caps format
+ 135 | ERROR   | Variable "release_date" is not in valid camel caps format
+ 135 | ERROR   | Variable "release_date" is not in valid camel caps format
+ 140 | ERROR   | Missing doc comment for function getStock()
+ 145 | ERROR   | Missing doc comment for function setStock()
+ 160 | ERROR   | Missing doc comment for function addCategory()
+ 170 | ERROR   | Missing doc comment for function removeCategory()
+ 187 | ERROR   | Missing doc comment for function addAuthor()
+ 197 | ERROR   | Missing doc comment for function removeAuthor()
+------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/CategoryRepository.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 19 | ERROR   | Missing doc comment for function __construct()
+ 24 | ERROR   | Missing doc comment for function save()
+ 33 | ERROR   | Missing doc comment for function remove()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/UserRepository.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 5 ERRORS AND 1 WARNING AFFECTING 5 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 22 | ERROR   | Missing doc comment for function __construct()
+ 27 | ERROR   | Missing doc comment for function save()
+ 36 | ERROR   | Missing doc comment for function remove()
+ 45 | ERROR   | Doc comment for parameter "$user" missing
+ 45 | ERROR   | Doc comment for parameter "$newHashedPassword" missing
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/AuthorRepository.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 19 | ERROR   | Missing doc comment for function __construct()
+ 24 | ERROR   | Missing doc comment for function save()
+ 33 | ERROR   | Missing doc comment for function remove()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/BookRepository.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 19 | ERROR   | Missing doc comment for function __construct()
+ 24 | ERROR   | Missing doc comment for function save()
+ 33 | ERROR   | Missing doc comment for function remove()
+ 42 | ERROR   | Missing doc comment for function findByTitleField()
+ 66 | ERROR   | Missing doc comment for function findByRatingField()
+ 77 | ERROR   | Missing doc comment for function findByDateField()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/Repository/RentalRepository.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+ 19 | ERROR   | Missing doc comment for function __construct()
+ 24 | ERROR   | Missing doc comment for function save()
+ 33 | ERROR   | Missing doc comment for function remove()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/DataFixtures/BookFixtures.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 55 | ERROR | Missing doc comment for function getDependencies()
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/DataFixtures/CategoryFixtures.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 35 | ERROR | Missing doc comment for function getDependencies()
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/DataFixtures/AppFixtures.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 2 ERRORS AND 1 WARNING AFFECTING 3 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  3 | WARNING | The license block has to be present at the top
+    |         |                 of every PHP file, before the namespace
+  8 | ERROR   | Missing doc comment for class AppFixtures
+ 10 | ERROR   | Missing doc comment for function load()
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/src/DataFixtures/AuthorFixtures.php
+------------------------------------------------------------------------------
+FOUND 1 ERROR AND 2 WARNINGS AFFECTING 3 LINES
+------------------------------------------------------------------------------
+ 29 | WARNING | Always use identical comparison unless you need type juggling
+ 32 | WARNING | Always use identical comparison unless you need type juggling
+ 48 | ERROR   | Missing doc comment for function getDependencies()
+------------------------------------------------------------------------------
+
+Time: 553ms; Memory: 10MB
+

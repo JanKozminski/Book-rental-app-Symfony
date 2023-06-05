@@ -37,10 +37,10 @@ class Book
 
     #[ORM\Column]
     #[Assert\Positive]
-    public ?int $page_number = null;
+    public ?int $pageNumber = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    public ?string $description = null;
+    private ?string $description = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     public ?\DateTimeInterface $release_date = null;
@@ -101,19 +101,19 @@ class Book
         return $this;
     }
 
-    public function getPage_number(): ?int
+    public function getPageNumber(): ?int
     {
-        return $this->page_number;
+        return $this->pageNumber;
     }
 
-    public function setPage_number(int $page_number): self
+    public function setPageNumber(int $pageNumber): self
     {
-        $this->page_number = $page_number;
+        $this->pageNumber = $pageNumber;
 
         return $this;
     }
 
-    public function getDescripton(): ?string
+    public function getDescription(): ?string
     {
         return $this->description;
     }

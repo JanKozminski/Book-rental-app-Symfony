@@ -21,7 +21,7 @@ class CategoryType extends AbstractType
             ->add('books', EntityType::class, ['class' => Book::class,
                 'choice_label' => function ($book): string {
                     return $book->getTitle();
-                },'multiple' => true]  )
+            }, 'multiple' => true, ])
         ;
     }
 

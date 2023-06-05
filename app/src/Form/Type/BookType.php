@@ -10,9 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormTypeInterface;
-
 
 class BookType extends AbstractType implements FormTypeInterface
 {
@@ -22,18 +20,18 @@ class BookType extends AbstractType implements FormTypeInterface
             ->add('isbn')
             ->add('title')
             ->add('page_number')
-            ->add('release_date',DateType::class,['widget'=>'single_text'])
+            ->add('release_date', DateType::class, ['widget' => 'single_text'])
             ->add('rating')
             ->add('description')
             ->add('stock')
             ->add('author', EntityType::class, ['class' => Author::class,
                 'choice_label' => function ($author): string {
-                return $author->getName();
-            }, 'multiple' => true])
+                    return $author->getName();
+            }, 'multiple' => true, ])
             ->add('category', EntityType::class, ['class' => Category::class,
-                'choice_label' => function ($category): string {
-                    return $category->getName();
-                },'multiple' => true]  )
+                    'choice_label' => function ($category): string {
+                        return $category->getName();
+            }, 'multiple' => true, ])
         ;
     }
 
@@ -43,6 +41,7 @@ class BookType extends AbstractType implements FormTypeInterface
             'data_class' => Book::class,
         ]);
     }
+
     public function getBlockPrefix(): string
     {
         return 'book';

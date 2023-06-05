@@ -21,10 +21,10 @@ class BookController extends AbstractController
     #[Route('/', name: 'book_home_page', methods: ['GET', 'POST'])]
     public function home(Request $request, BookRepository $bookRepository, CategoryRepository $categoryRepository, AuthorRepository $authorRepository): Response
     {
-        $books = $bookRepository->findAll();
-        if ($request->isMethod('GET')) {
+//        $books = $bookRepository->findAll();
+//        if ($request->isMethod('GET')) {
             $books = $this->filters($request, $bookRepository, $categoryRepository, $authorRepository);
-        }
+//        }
 
         return $this->render('book/home.html.twig', [
             'books' => $books,
@@ -64,6 +64,7 @@ class BookController extends AbstractController
             'book' => $bookRepository->findAll(),
         ]);
     }
+
     #[Route('/book/new', name: 'book_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -103,15 +104,19 @@ class BookController extends AbstractController
 
         return $this->redirectToRoute('book_index', [], Response::HTTP_SEE_OTHER);
     }
+
     #[Route('/book/{id}/edit', name: 'book_edit', methods: ['GET', 'POST'])]
-    //#[ParamConverter('id', class: 'Book', options:['id'=>'id'])]
+    // #[ParamConverter('id', class: 'Book', options:['id'=>'id'])]
     public function edit(Request $request, Book $book, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(BookType::class, $book,
+        $form = $this->createForm(
+            BookType::class,
+            $book,
             [
                 'method' => 'PUT',
                 'action' => $this->generateUrl('book_edit', ['id' => $book->getId()]),
-            ]);
+            ]
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

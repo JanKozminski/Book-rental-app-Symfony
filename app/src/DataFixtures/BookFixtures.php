@@ -52,8 +52,8 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
         $this->manager->flush();
     }
 
-public function getDependencies(): array
-{
-    return [AuthorFixtures::class, CategoryFixtures::class];
-}
+    public function getDependencies(): array
+    {
+        return [AuthorFixtures::class, CategoryFixtures::class];
+    }
 }
