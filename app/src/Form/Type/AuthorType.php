@@ -17,8 +17,8 @@ class AuthorType extends AbstractType
         $builder
             ->add('name')
             ->add('sex')
-            ->add('birth_date', DateType::class, ['widget' => 'single_text'])
-            ->add('country_of_origin')
+            ->add('birthDate', DateType::class, ['widget' => 'single_text'])
+            ->add('countryOfOrigin')
             ->add('books', EntityType::class, ['class' => Book::class,
                 'choice_label' => function ($book): string {
                     return $book->getTitle();

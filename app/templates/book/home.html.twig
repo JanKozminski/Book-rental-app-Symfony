@@ -96,7 +96,14 @@
                 <section class="books">
                     <div class="container">
                         <div class="">
-                            {% for val in books %}
+                            {% if pagination is defined and pagination.items|length %}
+
+                                <div class="navigation text-center">
+                                    {{ knp_pagination_render(pagination) }}
+                                </div>
+
+                            {% for val in pagination.items %}
+
                                 <div class="row book mb-3">
                                     <div class="col-3">
                                         <img src="..."
@@ -115,7 +122,7 @@
                                         {% for val in val.author %}
                                             <span> {{ val.name }}</span>,
                                         {% endfor %}
-                                      <p>{{ val.release_date | date('Y-m-d') }}<span class="number_of_pages">{{ val.page_number }} pages </span><span class="stock">{{ val.stock }} now available </span> </p>
+                                      <p>{{ val.releaseDate | date('Y-m-d') }}<span class="number_of_pages">{{ val.pageNumber }} pages </span><span class="stock">{{ val.stock }} now available </span> </p>
 
 
                                         <div class="row">
@@ -131,7 +138,7 @@
                                             </div>
                                             {% if is_granted('ROLE_USER') %}
                                             <div class="col-3">
-                                                <a href="{{ path('book_show', {'id': val.id}) }}" class="btn btn-outline-dark btn-sm w-100">Rent</a>
+                                                <a href="{{ path('rental_new', {'id': val.id}) }}" class="btn btn-outline-dark btn-sm w-100">Rent</a>
                                             </div>
                                             {% endif %}
                                         </div>
@@ -141,6 +148,14 @@
                                 </div>
 
                             {% endfor %}
+                            <div class="navigation text-center">
+                                {{ knp_pagination_render(pagination) }}
+                            </div>
+                            {% else %}
+                                <p>
+                                    {{ 'message.empty_list'|trans }}
+                                </p>
+                            {% endif %}
                         </div>
                     </div>
                 </section>

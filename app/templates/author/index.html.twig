@@ -21,11 +21,11 @@
         <tbody>
         {% for val in author %}
             <tr>
-                <td>{{ val.id }}</td>
+                 <td>{{ val.id }}</td>
                 <td>{{ val.name }}</td>
                 <td>{{ val.sex }}</td>
-                <td>{{ val.birth_date ? val.birth_date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ val.country_of_origin }}</td>
+                <td>{{ val.birthDate ? val.birthDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ val.countryOfOrigin }}</td>
                 <td>
                     <a href="{{ path('author_show', {'id': val.id}) }}" class="btn btn-dark text-light btn-sm "><i class="fas fa-eye">show</i></a>
                     {% if is_granted('ROLE_ADMIN') %}

@@ -16,6 +16,16 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BookRepository extends ServiceEntityRepository
 {
+    /**
+     * Items per page.
+     *
+     * Use constants to define configuration options that rarely change instead
+     * of specifying them in configuration files.
+     * See https://symfony.com/doc/current/best_practices.html#configuration
+     *
+     * @constant int
+     */
+    public const PAGINATOR_ITEMS_PER_PAGE = 5;
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Book::class);
@@ -41,26 +51,13 @@ class BookRepository extends ServiceEntityRepository
 
     public function findByTitleField($value)
     {
-        /*
         return $this->createQueryBuilder('t')
-            ->Where('t.book LIKE :val')
+            ->Where('t.title LIKE :val')
             ->setParameter('val', '%'.$value.'%')
             ->orderBy('t.id', 'ASC')
             ->getQuery()
             ->getResult()
             ;
-        */
-
-        $entityManager = $this->getEntityManager();
-
-        $query = $entityManager->createQuery(
-            "SELECT t
-            FROM App\Entity\Book t
-            WHERE t.title LIKE :val
-            ORDER BY t.release_date ASC"
-        )->setParameter('val', '%'.$value.'%');
-
-        return $query->getResult();
     }
 
     public function findByRatingField($value)

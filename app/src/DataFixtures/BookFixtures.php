@@ -30,12 +30,12 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             $ksiazka->setIsbn(
                 $this->faker->isbn13()
             );
-            $ksiazka->setRelease_date(
+            $ksiazka->setReleaseDate(
                 \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-156324 days', '-1 days')
                 )
             );
-            $ksiazka->setPage_number($this->faker->numberBetween(15, 2000));
+            $ksiazka->setPageNumber($this->faker->numberBetween(15, 2000));
             $ksiazka->setRating($this->faker->numberBetween(0, 10));
             $ksiazka->setDescription($this->faker->text);
             $ksiazka->setStock($this->faker->numberBetween(1, 15));

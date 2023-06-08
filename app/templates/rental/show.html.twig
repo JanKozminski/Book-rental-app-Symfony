@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rental{% endblock %}
+
+{% block body %}
+    <h1>Rental</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ rental.id }}</td>
+        </tr>
+        <tr>
+            <th>User Id</th>
+            <td>{% for val in rental.user %}
+                {{ val.id }}
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <th>Book Id</th>
+            <td>{% for val in rental.book %}
+                    {{ val.id }}
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ rental.email }}</td>
+        </tr>
+        <tr>
+            <th>Comment</th>
+            <td>{{ rental.comment }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('rental_index') }}" class="btn btn-primary mt-3 mb-3 btn-sm"><i class="fas fa-arrow-alt-circle-left"></i> back to list</a>
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+        {{ include('rental/_delete_form.html.twig') }}
+    {% endif %}
+{% endblock %}

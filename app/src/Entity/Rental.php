@@ -14,32 +14,32 @@ class Rental
     private ?int $id = null;
 
     #[ORM\Column(length: 62)]
-    private ?string $e_mail = null;
+    private ?string $Email = null;
 
     #[ORM\Column(length: 250)]
     private ?string $comment = null;
 
     #[ORM\ManyToOne(inversedBy: 'rentals')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user_id = null;
+    private ?User $user = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Book $book_id = null;
+    private ?Book $book = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getEMail(): ?string
+    public function getEmail(): ?string
     {
-        return $this->e_mail;
+        return $this->Email;
     }
 
-    public function setEMail(string $e_mail): self
+    public function setEmail(string $Email): self
     {
-        $this->e_mail = $e_mail;
+        $this->Email = $Email;
 
         return $this;
     }
@@ -56,26 +56,26 @@ class Rental
         return $this;
     }
 
-    public function getUserId(): ?User
+    public function getUser(): ?User
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId(?User $user_id): self
+    public function setUser(?User $user): self
     {
-        $this->user_id = $user_id;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getBookId(): ?Book
+    public function getBook(): ?Book
     {
-        return $this->book_id;
+        return $this->book;
     }
 
-    public function setBookId(?Book $book_id): self
+    public function setBook(?Book $book): self
     {
-        $this->book_id = $book_id;
+        $this->book = $book;
 
         return $this;
     }

@@ -37,13 +37,13 @@ class Book
 
     #[ORM\Column]
     #[Assert\Positive]
-    public ?int $pageNumber = null;
+    private ?int $pageNumber = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    public ?\DateTimeInterface $release_date = null;
+    private ?\DateTimeInterface $releaseDate = null;
 
     #[ORM\Column]
     private ?int $stock = null;
@@ -125,14 +125,14 @@ class Book
         return $this;
     }
 
-    public function getRelease_date(): ?\DateTimeInterface
+    public function getReleaseDate(): ?\DateTimeInterface
     {
-        return $this->release_date;
+        return $this->releaseDate;
     }
 
-    public function setRelease_date(\DateTimeInterface $release_date): self
+    public function setReleaseDate(\DateTimeInterface $release_date): self
     {
-        $this->release_date = $release_date;
+        $this->releaseDate = $release_date;
 
         return $this;
     }
@@ -202,4 +202,5 @@ class Book
 
         return $this;
     }
+
 }

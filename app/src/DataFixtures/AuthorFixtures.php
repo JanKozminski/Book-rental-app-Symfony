@@ -32,12 +32,12 @@ class AuthorFixtures extends AbstractBaseFixtures
             if ('female' == $sex) {
                 $autor->setSex('F');
             }
-            $autor->setBirthdate(
+            $autor->setBirthDate(
                 \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-156324 days', '-1 days')
                 )
             );
-            $autor->setCountryoforigin($this->faker->country);
+            $autor->setCountryOfOrigin($this->faker->country);
 
             return $autor;
         });

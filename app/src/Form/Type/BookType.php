@@ -19,8 +19,8 @@ class BookType extends AbstractType implements FormTypeInterface
         $builder
             ->add('isbn')
             ->add('title')
-            ->add('page_number')
-            ->add('release_date', DateType::class, ['widget' => 'single_text'])
+            ->add('pageNumber')
+            ->add('releaseDate', DateType::class, ['widget' => 'single_text'])
             ->add('rating')
             ->add('description')
             ->add('stock')

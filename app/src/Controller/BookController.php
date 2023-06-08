@@ -8,6 +8,7 @@ use App\Repository\AuthorRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,17 +20,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class BookController extends AbstractController
 {
     #[Route('/', name: 'book_home_page', methods: ['GET', 'POST'])]
-    public function home(Request $request, BookRepository $bookRepository, CategoryRepository $categoryRepository, AuthorRepository $authorRepository): Response
+    public function home(Request $request, BookRepository $bookRepository, CategoryRepository $categoryRepository, AuthorRepository $authorRepository, PaginatorInterface $paginator): Response
     {
-//        $books = $bookRepository->findAll();
-//        if ($request->isMethod('GET')) {
-            $books = $this->filters($request, $bookRepository, $categoryRepository, $authorRepository);
-//        }
+
+        $pagination = $paginator->paginate(
+            $bookRepository->findAll(),
+            $request->query->getInt('page', 1),
+            BookRepository::PAGINATOR_ITEMS_PER_PAGE
+        );
+
+        $books = $this->filters($request, $bookRepository, $categoryRepository, $authorRepository);
 
         return $this->render('book/home.html.twig', [
             'books' => $books,
             'author' => $authorRepository->findAll(),
             'category' => $categoryRepository->findAll(),
+            'pagination' => $pagination
         ]);
     }
 

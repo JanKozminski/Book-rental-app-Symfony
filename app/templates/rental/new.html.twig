@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Book{% endblock %}
+{% block title %}New Rental{% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col-8 offset-2 mt-5 mb-5 p-4 login">
-            <h1 class="mb-3">Create new Book</h1>
+            <h1 class="mb-3">Create new Rental</h1>
 
-            {{ include('book/_form.html.twig') }}
+            {{ include('rental/_form.html.twig') }}
 
-            <a href="{{ path('book_index') }}" class="btn btn-primary mt-3 mb-3 btn-sm">
+            <a href="{{ path('book_home_page') }}" class="btn btn-primary mt-3 mb-3 btn-sm">
                 <i class="fas fa-arrow-alt-circle-left"></i> back to list
             </a>
         </div>

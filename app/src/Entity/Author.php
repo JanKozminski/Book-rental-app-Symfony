@@ -29,7 +29,7 @@ class Author
 
     #[ORM\Column(length: 255)]
     #[Assert\Country]
-    public ?string $countryOfOrigin = null;
+    private ?string $countryOfOrigin = null;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'author')]
     private Collection $books;
@@ -68,12 +68,12 @@ class Author
         return $this;
     }
 
-    public function getBirthdate(): ?\DateTimeInterface
+    public function getBirthDate(): ?\DateTimeInterface
     {
         return $this->birthDate;
     }
 
-    public function setBirthdate(\DateTimeInterface $birthDate): self
+    public function setBirthDate(\DateTimeInterface $birthDate): self
     {
         $this->birthDate = $birthDate;
 
