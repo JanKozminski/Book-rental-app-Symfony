@@ -20,35 +20,35 @@
             <table class="table">
                 <tbody>
                 <tr>
-                    <th>Id</th>
+                    <th>{{ 'all.id'|trans }}</th>
                     <td>{{ book.id }}</td>
                 </tr>
                 <tr>
-                    <th>Isbn</th>
+                    <th>{{ 'label.isbn'|trans }}</th>
                     <td>{{ book.isbn }}</td>
                 </tr>
                 <tr>
-                    <th>Titre</th>
+                    <th>{{ 'label.title'|trans }}</th>
                     <td>{{ book.title }}</td>
                 </tr>
                 <tr>
-                    <th>Number of Pages</th>
+                    <th>{{ 'label.pages'|trans }}</th>
                     <td>{{ book.pageNumber }}</td>
                 </tr>
                 <tr>
-                    <th>Release date</th>
+                    <th>{{ 'label.date'|trans }}</th>
                     <td>{{ book.releaseDate ? book.releaseDate|date('Y-m-d H:i:s') : '' }}</td>
                 </tr>
                 <tr>
-                    <th>Rating</th>
+                    <th>{{ 'label.rating'|trans }}</th>
                     <td>{{ book.rating }}</td>
                 </tr>
                 <tr>
-                    <th>Description</th>
+                    <th>{{ 'label.description'|trans }}</th>
                     <td>{{ book.description }}</td>
                 </tr>
                 <tr>
-                    <th>Authors</th>
+                    <th>{{ 'label.authors'|trans }}</th>
                     <td>
                         {% for val in book.author %}
                             <a href="{{ path('author_show', {'id':val.id}) }}" class="badge bg-secondary">{{ val.name }}</a>
@@ -56,7 +56,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Categories</th>
+                    <th>{{ 'label.categories'|trans }}</th>
                     <td>
                         {% for val in book.category %}
                             <a href="{{ path('category_show', {'id':val.id}) }}" class="badge rounded-pill bg-info text-dark">{{ val.name }}</a>

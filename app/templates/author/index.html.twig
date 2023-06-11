@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Author index{% endblock %}
+{% block title %}{{ 'title.author_list'|trans }}{% endblock %}
 
 {% block body %}
-    <h1 class="mt-5 mb-4">Author index</h1>
+    <h1 class="mt-5 mb-4">{{ 'title.author_list'|trans }}</h1>
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('author_new') }}" class="btn btn-primary mt-3 mb-3 btn-sm"><i class="fas fa-plus-circle"></i> Create new</a>
     {% endif %}
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Sex</th>
-            <th>Date of birth</th>
-            <th>Nationality</th>
-            <th>actions</th>
+            <th>{{ 'all.id'|trans }}</th>
+            <th>{{ 'all.name'|trans }}</th>
+            <th>{{ 'author.sex'|trans }}</th>
+            <th>{{ 'author.date'|trans }}</th>
+            <th>{{ 'author.country'|trans }}</th>
+            <th>{{ 'all.actions'|trans }}</th>
         </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@
             </tr>
         {% else %}
             <tr>
-                <td> colspan="6">no records found</td>
+                <td> {{ 'message.record_not_found'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>

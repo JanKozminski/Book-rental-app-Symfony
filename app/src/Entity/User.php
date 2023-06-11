@@ -52,14 +52,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private ?string $password;
 
-    //    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Rental::class, orphanRemoval: true)]
-    //    private Collection $rentals;
-
-    public function __construct()
-    {
-        $this->rentals = new ArrayCollection();
-    }
-
     /**
      * Getter for id.
      *
@@ -165,6 +157,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
      *
      * @see UserInterface
+     *
+     * @return null
      */
     public function getSalt(): ?string
     {

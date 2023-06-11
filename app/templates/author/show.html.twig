@@ -8,28 +8,28 @@
     <table class="table">
         <tbody>
         <tr>
-            <th>Id</th>
+            <th>{{ 'all.id'|trans }}</th>
             <td>{{ author.id }}</td>
         </tr>
         <tr>
-            <th>Name</th>
+            <th>{{ 'all.name'|trans }}</th>
             <td>{{ author.name }}</td>
         </tr>
         <tr>
-            <th>Sex</th>
+            <th>{{ 'author.sex'|trans }}</th>
             <td>{{ author.sex }}</td>
         </tr>
         <tr>
-            <th>Date of birth</th>
+            <th>{{ 'author.date'|trans }}</th>
             <td>{{ author.birthDate ? author.birthDate|date('Y-m-d H:i:s') : '' }}</td>
         </tr>
         <tr>
-            <th>Nationality</th>
+            <th>{{ 'author.country'|trans }}</th>
             <td>{{ author.countryOfOrigin }}</td>
         </tr>
 
         <tr>
-            <th>Books</th>
+            <th>{{ 'author.books'|trans }}</th>
             <td>
                 {% for book in author.books %}
                     <a href="{{ path('book_show', {'id':book.id}) }}" class="badge bg-secondary">{{ book.title }}</a>

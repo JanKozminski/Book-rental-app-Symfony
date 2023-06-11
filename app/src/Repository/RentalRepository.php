@@ -1,4 +1,7 @@
 <?php
+/**
+ * Rental repository.
+ */
 
 namespace App\Repository;
 
@@ -16,27 +19,53 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class RentalRepository extends ServiceEntityRepository
 {
+    /**
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry Manager registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Rental::class);
     }
 
-    public function save(Rental $entity, bool $flush = false): void
+    /**
+     * Save entity.
+     *
+     * @param Rental $rental Rental entity
+     */
+    public function save(Rental $rental): void
     {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->_em->persist($rental);
+        $this->_em->flush();
     }
 
-    public function remove(Rental $entity, bool $flush = false): void
+    /**
+     * Delete entity.
+     *
+     * @param Rental $rental Rental entity
+     */
+    public function delete(Rental $rental): void
     {
-        $this->getEntityManager()->remove($entity);
+        $this->_em->remove($rental);
+        $this->_em->flush();
+    }
 
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+    /**
+     * Show rentals for user action.
+     *
+     * @param $userId
+     *
+     * @return float|int|mixed|string
+     */
+    public function showRentals($userId)
+    {
+        return $this->createQueryBuilder('e')
+            ->where('e.user = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
 //    /**

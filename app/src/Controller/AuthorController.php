@@ -1,39 +1,69 @@
 <?php
+/**
+ * Author controller.
+ */
 
 namespace App\Controller;
 
 use App\Form\Type\AuthorType;
 use App\Entity\Author;
-use App\Repository\AuthorRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Service\AuthorService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class AuthorController.
+ */
 #[Route('/author')]
 #[IsGranted('ROLE_USER')]
 class AuthorController extends AbstractController
 {
-    #[Route('/', name: 'author_index', methods: ['GET'])]
-    public function index(AuthorRepository $authorRepository): Response
+    /**
+     * Book service.
+     */
+    private AuthorService $authorService;
+
+    /**
+     * Constructor.
+     *
+     * @param AuthorService $authorService Author Service
+     */
+    public function __construct(AuthorService $authorService)
     {
-        return $this->render('author/index.html.twig', [
-            'author' => $authorRepository->findAll(),
-        ]);
+        $this->authorService = $authorService;
     }
 
+    /**
+     * Index action.
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/', name: 'author_index', methods: ['GET'])]
+    public function index(): Response
+    {
+        return $this->render('author/index.html.twig', [
+            'author' => $this->authorService->findAllAuthors(),
+        ]);
+    }
+    /**
+     * Create action.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return Response HTTP response
+     */
     #[Route('/new', name: 'author_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request): Response
     {
         $author = new Author();
         $form = $this->createForm(AuthorType::class, $author);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($author);
-            $entityManager->flush();
+            $this->authorService->save($author);
 
             return $this->redirectToRoute('author_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -43,7 +73,13 @@ class AuthorController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    /**
+     * Show action.
+     *
+     * @param Author $author Author entity
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}', name: 'author_show', methods: ['GET'])]
     public function show(Author $author): Response
     {
@@ -52,14 +88,22 @@ class AuthorController extends AbstractController
         ]);
     }
 
+    /**
+     * Edit action.
+     *
+     * @param Request $request HTTP request
+     * @param Author  $author  Author entity
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}/edit', name: 'author_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Author $author, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Author $author): Response
     {
         $form = $this->createForm(AuthorType::class, $author);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $this->authorService->save($author);
 
             return $this->redirectToRoute('author_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -69,13 +113,19 @@ class AuthorController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    /**
+     * Delete action.
+     *
+     * @param Request $request HTTP request
+     * @param Author  $author  Author entity
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}/delete', name: 'author_delete', methods: ['POST'])]
-    public function delete(Request $request, Author $author, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Author $author): Response
     {
         if ($this->isCsrfTokenValid('delete'.$author->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($author);
-            $entityManager->flush();
+            $this->authorService->delete($author);
         }
 
         return $this->redirectToRoute('author_index', [], Response::HTTP_SEE_OTHER);

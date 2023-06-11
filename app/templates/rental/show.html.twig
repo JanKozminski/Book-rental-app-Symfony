@@ -8,29 +8,25 @@
     <table class="table">
         <tbody>
         <tr>
-            <th>Id</th>
+            <th>{{ 'all.id'|trans }}</th>
             <td>{{ rental.id }}</td>
         </tr>
         <tr>
-            <th>User Id</th>
-            <td>{% for val in rental.user %}
-                {{ val.id }}
-                {% endfor %}
+            <th>{{ 'rental.user'|trans }}</th>
+            <td>{{ rental.user.id }}
             </td>
         </tr>
         <tr>
-            <th>Book Id</th>
-            <td>{% for val in rental.book %}
-                    {{ val.id }}
-                {% endfor %}
+            <th>{{ 'rental.book'|trans }}</th>
+            <td>{{ rental.book.id }}
             </td>
         </tr>
         <tr>
-            <th>Email</th>
+            <th>{{ 'rental.email'|trans }}</th>
             <td>{{ rental.email }}</td>
         </tr>
         <tr>
-            <th>Comment</th>
+            <th>{{ 'rental.comment'|trans }}</th>
             <td>{{ rental.comment }}</td>
         </tr>
 

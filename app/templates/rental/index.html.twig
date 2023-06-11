@@ -7,20 +7,16 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Id</th>
-{#            <th>User Id</th>#}
-{#            <th>Book Id</th>#}
-            <th>E-mail</th>
-            <th>Comment</th>
-            <th>actions</th>
+            <th>{{ 'all.id'|trans }}</th>
+            <th>{{ 'rental.email'|trans }}</th>
+            <th>{{ 'rental.comment'|trans }}</th>
+            <th>{{ 'all.actions'|trans }}</th>
         </tr>
         </thead>
         <tbody>
         {% for val in rental %}
             <tr>
                  <td>{{ val.id }}</td>
-               {#  <td>{{ val.user }}</td> #}
-               {#  <td>{{ val.book }}</td> #}
                 <td>{{ val.email }}</td>
                 <td>{{ val.comment }}</td>
                 <td>
@@ -31,7 +27,7 @@
             </tr>
         {% else %}
             <tr>
-                <td> colspan="6">no records found</td>
+                <td> {{ 'message.record_not_found'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>

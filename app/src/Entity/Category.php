@@ -1,4 +1,7 @@
 <?php
+/**
+ * Category entity.
+ */
 
 namespace App\Entity;
 
@@ -7,35 +10,68 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Class Category.
+ *
+ * @psalm-suppress MissingConstructor
+ */
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
+    /**
+     * Primary key.
+     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+    /**
+     * Name.
+     */
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    /**
+     * Books.
+     *
+     * @var Collection Books
+     */
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'category')]
     private Collection $books;
 
+    /**
+     * Constructor for collection Books.
+     */
     public function __construct()
     {
         $this->books = new ArrayCollection();
     }
 
+    /**
+     * Getter for Id.
+     *
+     * @return int|null Id
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * Getter for name.
+     *
+     * @return string|null Name
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * Setter for name.
+     *
+     * @param string|null $name Name
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -51,6 +87,13 @@ class Category
         return $this->books;
     }
 
+    /**
+     * Add action.
+     *
+     * @param Book $book Book
+     *
+     * @return Category Books
+     */
     public function addBooks(Book $book): self
     {
         if (!$this->books->contains($book)) {
@@ -60,6 +103,13 @@ class Category
         return $this;
     }
 
+    /**
+     * Remove action.
+     *
+     * @param Book $book Book
+     *
+     * @return Category Books
+     */
     public function removeBooks(Book $book): self
     {
         $this->books->removeElement($book);

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Author repository.
+ */
 
 namespace App\Repository;
 
@@ -16,27 +19,36 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AuthorRepository extends ServiceEntityRepository
 {
+    /**
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry Manager registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Author::class);
     }
 
-    public function save(Author $entity, bool $flush = false): void
+    /**
+     * Save entity.
+     *
+     * @param Author $author Author entity
+     */
+    public function save(Author $author): void
     {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->_em->persist($author);
+        $this->_em->flush();
     }
 
-    public function remove(Author $entity, bool $flush = false): void
+    /**
+     * Delete entity.
+     *
+     * @param Author $author Author entity
+     */
+    public function delete(Author $author): void
     {
-        $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->_em->remove($author);
+        $this->_em->flush();
     }
 
 //    /**

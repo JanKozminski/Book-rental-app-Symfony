@@ -25,33 +25,41 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
     public function loadData(): void
     {
         $this->createMany(50, 'books', function (int $i) {
-            $ksiazka = new Book();
-            $ksiazka->setTitle($this->faker->title);
-            $ksiazka->setIsbn(
+            $book = new Book();
+            $book->setTitle($this->faker->word);
+            $book->setIsbn(
                 $this->faker->isbn13()
             );
-            $ksiazka->setReleaseDate(
+            $book->setReleaseDate(
                 \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-156324 days', '-1 days')
                 )
             );
-            $ksiazka->setPageNumber($this->faker->numberBetween(15, 2000));
-            $ksiazka->setRating($this->faker->numberBetween(0, 10));
-            $ksiazka->setDescription($this->faker->text);
-            $ksiazka->setStock($this->faker->numberBetween(1, 15));
+            $book->setPageNumber($this->faker->numberBetween(15, 2000));
+            $book->setRating($this->faker->numberBetween(0, 10));
+            $book->setDescription($this->faker->text);
+            $book->setStock($this->faker->numberBetween(1, 15));
 
             $author = $this->getRandomReference('authors');
-            $ksiazka->addAuthor($author);
+            $book->addAuthor($author);
 
             $category = $this->getRandomReference('categories');
-            $ksiazka->addCategory($category);
+            $book->addCategory($category);
 
-            return $ksiazka;
+            return $book;
         });
 
         $this->manager->flush();
     }
 
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on.
+     *
+     * @return string[] of dependencies
+     *
+     * @psalm-return array{0: AuthorFixtures::class, CategoryFixtures::class}
+     */
     public function getDependencies(): array
     {
         return [AuthorFixtures::class, CategoryFixtures::class];

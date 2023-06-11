@@ -1,42 +1,85 @@
 <?php
+/**
+ * Rental controller.
+ */
 
 namespace App\Controller;
 
+use App\Entity\Book;
 use App\Entity\Rental;
 use App\Form\Type\RentalType;
-use App\Repository\RentalRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Service\RentalService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class RentalController.
+ */
 #[Route('/rental')]
 #[IsGranted('ROLE_USER')]
 class RentalController extends AbstractController
 {
-    #[Route('/', name: 'rental_index', methods: ['GET', 'POST'])]
-    #[IsGranted('ROLE_ADMIN')]
-    public function index(RentalRepository $rentalRepository): Response{
-        return $this->render('rental/index.html.twig', [
-            'rental' => $rentalRepository->findAll(),
+    /**
+     * Rental service.
+     */
+    private RentalService $rentalService;
+
+    /**
+     * Constructor.
+     *
+     * @param RentalService $rentalService Rental service
+     */
+    public function __construct(RentalService $rentalService)
+    {
+        $this->rentalService = $rentalService;
+    }
+
+    /**
+     * User rentals index action.
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/user', name: 'rental_user', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
+    public function private(): Response
+    {
+        $user = $this->getUser();
+        $userId = $user->getId();
+
+        return $this->render('rental/rental.html.twig', [
+            'rental' => $this->rentalService->findMyRentals($userId),
         ]);
     }
+    /**
+     * Create action.
+     *
+     * @param Request $request HTTP request
+     * @param Book    $book    Book entity
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}', name: 'rental_new', methods: ['GET', 'POST'])]
-    public function rent(Request $request, EntityManagerInterface $entityManager, $id): Response
+    public function rent(Request $request, Book $book): Response
     {
         $rental = new Rental();
-        $form = $this->createForm(RentalType::class, $rental,
+        $rental->setUser($this->getUser());
+        $rental->setBook($book);
+        $book->setStock($book->getStock() - 1);
+        $form = $this->createForm(
+            RentalType::class,
+            $rental,
             [
-                'id_from_url' => $id,
-            ]);
+                'method' => 'POST',
+                'action' => $this->generateUrl('rental_new', ['id' => $book->getId()]),
+            ]
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($rental);
-            $entityManager->flush();
+            $this->rentalService->save($rental);
 
             return $this->redirectToRoute('book_home_page', [], Response::HTTP_SEE_OTHER);
         }
@@ -46,22 +89,49 @@ class RentalController extends AbstractController
             'form' => $form,
         ]);
     }
-    #[Route('/{id}', name: 'rental_show', methods: ['GET'])]
-    #[IsGranted('ROLE_USER')]
+
+    /**
+     * Index action.
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/rentalmanage/index', name: 'rental_index', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
+    public function index(): Response
+    {
+        return $this->render('rental/index.html.twig', [
+            'rental' => $this->rentalService->findAllRentals(),
+        ]);
+    }
+    /**
+     * Show rental action.
+     *
+     * @param Rental $rental Rental entity
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/rentalmanage/index/{id}', name: 'rental_show', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function show(Rental $rental): Response
     {
         return $this->render('rental/show.html.twig', [
             'rental' => $rental,
         ]);
     }
-
+    /**
+     * Delete action.
+     *
+     * @param Request $request HTTP request
+     * @param Rental  $rental  Rental entity
+     *
+     * @return Response HTTP response
+     */
     #[Route('/rental/{id}/delete', name: 'rental_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function delete(Request $request, Rental $rental, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Rental $rental): Response
     {
         if ($this->isCsrfTokenValid('delete'.$rental->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($rental);
-            $entityManager->flush();
+            $this->rentalService->delete($rental);
         }
 
         return $this->redirectToRoute('rental_index', [], Response::HTTP_SEE_OTHER);

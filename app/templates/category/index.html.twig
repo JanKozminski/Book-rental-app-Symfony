@@ -11,9 +11,9 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>actions</th>
+            <th>{{ 'all.id'|trans }}</th>
+            <th>{{ 'all.name'|trans }}</th>
+            <th>{{ 'all.actions'|trans }}</th>
         </tr>
         </thead>
         <tbody>
@@ -30,7 +30,7 @@
             </tr>
         {% else %}
             <tr>
-                <td> colspan="3">no records found</td>
+                <td> {{ 'message.record_not_found'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>

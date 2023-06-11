@@ -1,4 +1,7 @@
 <?php
+/**
+ * Book repository.
+ */
 
 namespace App\Repository;
 
@@ -26,29 +29,46 @@ class BookRepository extends ServiceEntityRepository
      * @constant int
      */
     public const PAGINATOR_ITEMS_PER_PAGE = 5;
+
+    /**
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry Manager registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Book::class);
     }
 
-    public function save(Book $entity, bool $flush = false): void
+    /**
+     * Save entity.
+     *
+     * @param Book $book Book entity
+     */
+    public function save(Book $book): void
     {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->_em->persist($book);
+        $this->_em->flush();
     }
 
-    public function remove(Book $entity, bool $flush = false): void
+    /**
+     * Delete entity.
+     *
+     * @param Book $book Book entity
+     */
+    public function delete(Book $book): void
     {
-        $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->_em->remove($book);
+        $this->_em->flush();
     }
 
+    /**
+     * Find by title action.
+     *
+     * @param $value
+     *
+     * @return float|int|mixed|string
+     */
     public function findByTitleField($value)
     {
         return $this->createQueryBuilder('t')
@@ -57,9 +77,16 @@ class BookRepository extends ServiceEntityRepository
             ->orderBy('t.id', 'ASC')
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 
+    /**
+     * Find by title action.
+     *
+     * @param $value
+     *
+     * @return float|int|mixed|string
+     */
     public function findByRatingField($value)
     {
         return $this->createQueryBuilder('t')
@@ -71,6 +98,14 @@ class BookRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * Find between two dates action.
+     *
+     * @param $date1
+     * @param $date2
+     *
+     * @return float|int|mixed|string
+     */
     public function findByDateField($date1, $date2) // takes date
     {
         return $this->createQueryBuilder('t')

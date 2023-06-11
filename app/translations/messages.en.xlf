@@ -2,26 +2,46 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="file.ext">
     <body>
-      <trans-unit id="label.actions">
-        <source>label.actions</source>
+      <trans-unit id="all.actions">
+        <source>all.actions</source>
         <target>Actions</target>
       </trans-unit>
-      <trans-unit id="label.id">
-        <source>label.id</source>
+      <trans-unit id="all.id">
+        <source>all.id</source>
         <target>Id</target>
       </trans-unit>
       <trans-unit id="label.title">
         <source>label.title</source>
         <target>Title</target>
       </trans-unit>
-      <trans-unit id="label.content">
-        <source>label.content</source>
-        <target>Content</target>
+      <trans-unit id="label.isbn">
+      <source>label.isbn</source>
+       <target>Isbn</target>
+       </trans-unit>
+      <trans-unit id="label.pages">
+        <source>label.pages</source>
+        <target>Number of pages</target>
       </trans-unit>
-      <trans-unit id="label.tags">
-        <source>label.tags</source>
-        <target>Tags</target>
+      <trans-unit id="label.date">
+        <source>label.date</source>
+        <target>Release date</target>
       </trans-unit>
+      <trans-unit id="label.rating">
+       <source>label.rating</source>
+       <target>Rating</target>
+      </trans-unit>
+      <trans-unit id="label.description">
+       <source>label.description</source>
+       <target>Description</target>
+      </trans-unit>
+      <trans-unit id="label.authors">
+         <source>label.authors</source>
+         <target>Authors</target>
+       </trans-unit>
+        <trans-unit id="label.categories">
+         <source>label.categories</source>
+         <target>Categories</target>
+         </trans-unit>
       <trans-unit id="message.empty_list">
         <source>message.empty_list</source>
         <target>List is empty.</target>
@@ -30,14 +50,66 @@
         <source>message.record_not_found</source>
         <target>Record not found.</target>
       </trans-unit>
-      <trans-unit id="title.record_list">
+      <trans-unit id="title.book_list">
         <source>title.record_list</source>
-        <target>Records list</target>
+        <target>Book index</target>
       </trans-unit>
-      <trans-unit id="title.record_view">
-        <source>title.record_view</source>
-        <target>Record view #%id%</target>
+      <trans-unit id="title.home_list">
+          <source>title.home_list</source>
+          <target>Home</target>
+       </trans-unit>
+      <trans-unit id="title.book_table">
+        <source>title.book_table</source>
+        <target>Book index</target>
       </trans-unit>
+      <trans-unit id="title.author_list">
+        <source>title.author_list</source>
+        <target>Author index</target>
+      </trans-unit>
+      <trans-unit id="all.name">
+          <source>all.name</source>
+         <target>Name</target>
+        </trans-unit>
+       <trans-unit id="author.sex">
+         <source>author.sex</source>
+          <target>Sex</target>
+         </trans-unit>
+        <trans-unit id="author.date">
+            <source>author.date</source>
+            <target>Birth date</target>
+         </trans-unit>
+         <trans-unit id="author.country">
+            <source>author.country</source>
+            <target>Country of origin</target>
+         </trans-unit>
+        <trans-unit id="author.books">
+          <source>author.books</source>
+          <target>Books</target>
+             </trans-unit>
+          <trans-unit id="rental.email">
+              <source>rental.email</source>
+              <target>Email</target>
+          </trans-unit>
+            <trans-unit id="rental.comment">
+              <source>rental.comment</source>
+              <target>Comment</target>
+            </trans-unit>
+          <trans-unit id="rental.user">
+            <source>rental.user</source>
+             <target>User Id</target>
+              </trans-unit>
+              <trans-unit id="rental.book">
+                   <source>rental.book</source>
+                   <target>Book Id</target>
+              </trans-unit>
+               <trans-unit id="rental.title">
+                 <source>rental.title</source>
+                 <target>Rental index</target>
+                </trans-unit>
+             <trans-unit id="category.title">
+              <source>category.title</source>
+               <target>Category index</target>
+               </trans-unit>
     </body>
   </file>
 </xliff>
