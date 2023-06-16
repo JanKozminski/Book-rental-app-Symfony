@@ -11,6 +11,7 @@ use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormTypeInterface;
@@ -34,20 +35,56 @@ class BookType extends AbstractType implements FormTypeInterface
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('isbn')
-            ->add('title')
-            ->add('pageNumber')
-            ->add('releaseDate', DateType::class, ['widget' => 'single_text'])
-            ->add('rating')
-            ->add('description')
-            ->add('stock')
+            ->add(
+                'isbn',
+                TextType::class,
+                [
+                    'label' => 'label.isbn',
+                ]
+            )
+            ->add(
+                'title',
+                TextType::class,
+                [
+                    'label' => 'label.title',
+                ]
+            )
+            ->add(
+                'pageNumber',
+                TextType::class,
+                [
+                    'label' => 'label.pages',
+                ]
+            )
+            ->add('releaseDate', DateType::class, ['widget' => 'single_text', 'label' => 'label.date'])
+            ->add(
+                'rating',
+                TextType::class,
+                [
+                    'label' => 'label.rating',
+                ]
+            )
+            ->add(
+                'description',
+                TextType::class,
+                [
+                    'label' => 'label.description',
+                ]
+            )
+            ->add(
+                'stock',
+                TextType::class,
+                [
+                    'label' => 'label.stock',
+                ]
+            )
             ->add(
                 'author',
                 EntityType::class,
                 ['class' => Author::class,
                 'choice_label' => function ($author): string {
                     return $author->getName();
-                }, 'multiple' => true, ]
+                }, 'multiple' => true, 'label' => 'label.authors',  ]
             )
             ->add(
                 'category',
@@ -57,6 +94,7 @@ class BookType extends AbstractType implements FormTypeInterface
                     return $category->getName();
                 },
                 'multiple' => true,
+                'label' => 'label.categories',
                 ]
             )
         ;

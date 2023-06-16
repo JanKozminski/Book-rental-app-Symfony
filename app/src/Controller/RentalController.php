@@ -11,6 +11,7 @@ use App\Form\Type\RentalType;
 use App\Service\RentalService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -53,6 +54,7 @@ class RentalController extends AbstractController
             'rental' => $this->rentalService->findMyRentals($userId),
         ]);
     }
+
     /**
      * Create action.
      *
@@ -64,30 +66,34 @@ class RentalController extends AbstractController
     #[Route('/{id}', name: 'rental_new', methods: ['GET', 'POST'])]
     public function rent(Request $request, Book $book): Response
     {
-        $rental = new Rental();
-        $rental->setUser($this->getUser());
-        $rental->setBook($book);
-        $book->setStock($book->getStock() - 1);
-        $form = $this->createForm(
-            RentalType::class,
-            $rental,
-            [
-                'method' => 'POST',
-                'action' => $this->generateUrl('rental_new', ['id' => $book->getId()]),
-            ]
-        );
-        $form->handleRequest($request);
+        if ($this->rentalService->rentable($book)) {
+            $rental = new Rental();
+            $rental->setUser($this->getUser());
+            $rental->setBook($book);
+            $book->setStock($book->getStock() - 1);
+            $form = $this->createForm(
+                RentalType::class,
+                $rental,
+                [
+                    'method' => 'POST',
+                    'action' => $this->generateUrl('rental_new', ['id' => $book->getId()]),
+                ]
+            );
+            $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->rentalService->save($rental);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->rentalService->save($rental);
 
-            return $this->redirectToRoute('book_home_page', [], Response::HTTP_SEE_OTHER);
+                return $this->redirectToRoute('book_home_page', [], Response::HTTP_SEE_OTHER);
+            }
+
+            return $this->renderForm('rental/new.html.twig', [
+                'rental' => $rental,
+                'form' => $form,
+            ]);
+        } else {
+            return $this->render('default/_stock_message.html.twig');
         }
-
-        return $this->renderForm('rental/new.html.twig', [
-            'rental' => $rental,
-            'form' => $form,
-        ]);
     }
 
     /**
@@ -103,6 +109,7 @@ class RentalController extends AbstractController
             'rental' => $this->rentalService->findAllRentals(),
         ]);
     }
+
     /**
      * Show rental action.
      *
@@ -118,6 +125,7 @@ class RentalController extends AbstractController
             'rental' => $rental,
         ]);
     }
+
     /**
      * Delete action.
      *
@@ -126,14 +134,32 @@ class RentalController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/rental/{id}/delete', name: 'rental_delete', methods: ['POST'])]
+    #[Route('/rental/{id}/delete', name: 'rental_delete', methods: ['GET|DELETE'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Rental $rental): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$rental->getId(), $request->request->get('_token'))) {
+        $form = $this->createForm(
+            FormType::class,
+            $rental,
+            [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('rental_delete', ['id' => $rental->getId()]),
+            ]
+        );
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->rentalService->delete($rental);
+
+            return $this->redirectToRoute('rental_index');
         }
 
-        return $this->redirectToRoute('rental_index', [], Response::HTTP_SEE_OTHER);
+        return $this->render(
+            'rental/_delete_form.html.twig',
+            [
+                'form' => $form->createView(),
+                'rental' => $rental,
+            ]
+        );
     }
 }

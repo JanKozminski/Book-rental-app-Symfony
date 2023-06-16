@@ -31,7 +31,7 @@ class AuthorService
     /**
      * Find all authors action.
      *
-     * @return array
+     * @return array Array of authors
      */
     public function findAllAuthors(): array
     {

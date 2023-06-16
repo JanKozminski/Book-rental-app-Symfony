@@ -9,9 +9,13 @@ use App\Entity\Book;
 use App\Repository\AuthorRepository;
 use App\Repository\BookRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\RentalRepository;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class BookService.
@@ -34,6 +38,11 @@ class BookService
     private AuthorRepository $authorRepository;
 
     /**
+     * Rental repository.
+     */
+    private RentalRepository $rentalRepository;
+
+    /**
      * Paginator.
      */
     private PaginatorInterface $paginator;
@@ -45,13 +54,15 @@ class BookService
      * @param PaginatorInterface $paginator          Paginator
      * @param CategoryRepository $categoryRepository Category repository
      * @param AuthorRepository   $authorRepository   Author repository
+     * @param RentalRepository   $rentalRepository   Rental repository
      */
-    public function __construct(BookRepository $bookRepository, PaginatorInterface $paginator, CategoryRepository $categoryRepository, AuthorRepository $authorRepository)
+    public function __construct(BookRepository $bookRepository, PaginatorInterface $paginator, CategoryRepository $categoryRepository, AuthorRepository $authorRepository, RentalRepository $rentalRepository)
     {
         $this->bookRepository = $bookRepository;
         $this->paginator = $paginator;
         $this->categoryRepository = $categoryRepository;
         $this->authorRepository = $authorRepository;
+        $this->rentalRepository = $rentalRepository;
     }
 
     /**
@@ -91,6 +102,24 @@ class BookService
     }
 
     /**
+     * Can Category be deleted?
+     *
+     * @param Book $book Book entity
+     *
+     * @return bool Result
+     */
+    public function canBeDeleted(Book $book): bool
+    {
+        try {
+            $result = $this->rentalRepository->countByBook($book);
+
+            return !($result > 0);
+        } catch (NoResultException|NonUniqueResultException) {
+            return false;
+        }
+    }// end canBeDeleted()
+
+    /**
      * Find all books action.
      *
      * @return array
@@ -123,11 +152,11 @@ class BookService
     /**
      * Manage Filters action.
      *
-     * @param $request
+     * @param Request $request Request taken from a user
      *
      * @return Book|Collection|float|int|mixed|string
      */
-    public function getFilters($request)
+    public function getFilters(Request $request): mixed
     {
         if ($request->get('keywords')) {
             return $this->bookRepository->findByTitleField($request->query->get('keywords'));

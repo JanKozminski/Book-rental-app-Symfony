@@ -9,6 +9,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Category.
@@ -29,6 +30,7 @@ class Category
      * Name.
      */
     #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255, maxMessage: 'Field should have maximum of {{ limit }} signs')]
     private ?string $name = null;
 
     /**
@@ -72,11 +74,9 @@ class Category
      *
      * @param string|null $name Name
      */
-    public function setName(string $name): self
+    public function setName(string $name): void
     {
         $this->name = $name;
-
-        return $this;
     }
 
     /**

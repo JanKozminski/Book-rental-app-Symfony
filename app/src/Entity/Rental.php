@@ -7,6 +7,7 @@ namespace App\Entity;
 
 use App\Repository\RentalRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Rental.
@@ -28,12 +29,14 @@ class Rental
      * Email.
      */
     #[ORM\Column(length: 62)]
+    #[Assert\Email]
     private ?string $email = null;
 
     /**
      * Comment.
      */
-    #[ORM\Column(length: 250)]
+    #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255, maxMessage: 'Field should have maximum of {{ limit }} signs')]
     private ?string $comment = null;
 
     /**
@@ -75,11 +78,9 @@ class Rental
      *
      * @param string|null $email Email
      */
-    public function setEmail(string $email): self
+    public function setEmail(string $email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
     /**
@@ -97,11 +98,9 @@ class Rental
      *
      * @param string|null $comment Comment
      */
-    public function setComment(string $comment): self
+    public function setComment(string $comment): void
     {
         $this->comment = $comment;
-
-        return $this;
     }
 
     /**
@@ -119,11 +118,9 @@ class Rental
      *
      * @param User|null $user Name
      */
-    public function setUser(?User $user): self
+    public function setUser(?User $user): void
     {
         $this->user = $user;
-
-        return $this;
     }
 
     /**
@@ -141,10 +138,8 @@ class Rental
      *
      * @param Book|null $book Book
      */
-    public function setBook(?Book $book): self
+    public function setBook(?Book $book): void
     {
         $this->book = $book;
-
-        return $this;
     }
 }

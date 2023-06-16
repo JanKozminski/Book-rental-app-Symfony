@@ -9,11 +9,12 @@ use App\Form\Type\BookType;
 use App\Entity\Book;
 use App\Service\BookService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class BookController.
@@ -27,13 +28,20 @@ class BookController extends AbstractController
     private BookService $bookService;
 
     /**
+     * Translator.
+     */
+    private TranslatorInterface $translator;
+
+    /**
      * Constructor.
      *
-     * @param BookService $bookService Book service
+     * @param BookService         $bookService Book service
+     * @param TranslatorInterface $translator  Translator
      */
-    public function __construct(BookService $bookService)
+    public function __construct(BookService $bookService, TranslatorInterface $translator)
     {
         $this->bookService = $bookService;
+        $this->translator = $translator;
     }
 
     /**
@@ -71,6 +79,7 @@ class BookController extends AbstractController
     {
         return $this->bookService->getFilters($request);
     }
+
     /**
      * Index action.
      *
@@ -86,6 +95,7 @@ class BookController extends AbstractController
             'book' => $this->bookService->findAllBooks(),
         ]);
     }
+
     /**
      * Create action.
      *
@@ -127,6 +137,7 @@ class BookController extends AbstractController
             'book' => $book,
         ]);
     }
+
     /**
      * Delete action.
      *
@@ -135,15 +146,42 @@ class BookController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/book/{id}/delete', name: 'book_delete', methods: ['POST'])]
+    #[Route('book/{id}/delete', name: 'book_delete', methods: ['GET|DELETE'])]
     public function delete(Request $request, Book $book): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$book->getId(), $request->request->get('_token'))) {
+        if (!$this->bookService->canBeDeleted($book)) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.book_contains_rental')
+            );
+
+            return $this->redirectToRoute('book_index');
+        }
+        $form = $this->createForm(
+            FormType::class,
+            $book,
+            [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('book_delete', ['id' => $book->getId()]),
+            ]
+        );
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->bookService->delete($book);
+
+            return $this->redirectToRoute('book_index');
         }
 
-        return $this->redirectToRoute('book_index', [], Response::HTTP_SEE_OTHER);
+        return $this->render(
+            'book/_delete_form.html.twig',
+            [
+                'form' => $form->createView(),
+                'book' => $book,
+            ]
+        );
     }
+
     /**
      * Edit action.
      *

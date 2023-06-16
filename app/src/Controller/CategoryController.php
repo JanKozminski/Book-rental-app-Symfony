@@ -10,6 +10,7 @@ use App\Entity\Category;
 use App\Service\CategoryService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,6 +36,7 @@ class CategoryController extends AbstractController
     {
         $this->categoryService = $categoryService;
     }
+
     /**
      * Index action.
      *
@@ -47,6 +49,7 @@ class CategoryController extends AbstractController
             'category' => $this->categoryService->findAllCategories(),
         ]);
     }
+
     /**
      * Create action.
      *
@@ -72,6 +75,7 @@ class CategoryController extends AbstractController
             'form' => $form,
         ]);
     }
+
     /**
      * Show action.
      *
@@ -86,6 +90,7 @@ class CategoryController extends AbstractController
             'category' => $category,
         ]);
     }
+
     /**
      * Edit action.
      *
@@ -111,6 +116,7 @@ class CategoryController extends AbstractController
             'form' => $form,
         ]);
     }
+
     /**
      * Delete action.
      *
@@ -119,13 +125,31 @@ class CategoryController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/delete', name: 'category_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'category_delete', methods: ['GET|DELETE'])]
     public function delete(Request $request, Category $category): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+        $form = $this->createForm(
+            FormType::class,
+            $category,
+            [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('category_delete', ['id' => $category->getId()]),
+            ]
+        );
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->categoryService->delete($category);
+
+            return $this->redirectToRoute('category_index');
         }
 
-        return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
+        return $this->render(
+            'category/_delete_form.html.twig',
+            [
+                'form' => $form->createView(),
+                'category' => $category,
+            ]
+        );
     }
 }

@@ -5,6 +5,7 @@
 
 namespace App\Service;
 
+use App\Entity\Book;
 use App\Entity\Rental;
 use App\Repository\RentalRepository;
 
@@ -51,7 +52,7 @@ class RentalService
     /**
      * Find all rentals action.
      *
-     * @return array
+     * @return array Array of rentals
      */
     public function findAllRentals(): array
     {
@@ -61,12 +62,30 @@ class RentalService
     /**
      * Find user rentals action.
      *
-     * @param $userId
+     * @param int $userId User Id
      *
-     * @return array
+     * @return array Array of user rentals
      */
-    public function findMyRentals($userId): array
+    public function findMyRentals(int $userId): array
     {
         return $this->rentalRepository->showRentals($userId);
+    }
+
+    /**
+     * Check if book is out of stock action.
+     *
+     * @param Book $value Book entity
+     *
+     * @return bool Is stock equal to 0 or no
+     */
+    public function rentable(Book $value): bool
+    {
+        $stock = $value->getStock();
+
+        if (0 != $stock) {
+            return true;
+        }
+
+        return false;
     }
 }

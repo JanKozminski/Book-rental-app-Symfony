@@ -9,6 +9,7 @@ use App\Entity\Author;
 use App\Entity\Book;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -32,14 +33,34 @@ class AuthorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('sex')
+            ->add(
+                'name',
+                TextType::class,
+                [
+                    'label' => 'author.author',
+                ]
+            )
+            ->add(
+                'sex',
+                TextType::class,
+                [
+                    'label' => 'author.sex',
+                ]
+            )
             ->add(
                 'birthDate',
                 DateType::class,
-                ['widget' => 'single_text']
+                ['widget' => 'single_text',
+                 'label' => 'author.date',
+                ]
             )
-            ->add('countryOfOrigin')
+            ->add(
+                'countryOfOrigin',
+                TextType::class,
+                [
+                    'label' => 'author.country',
+                ]
+            )
             ->add(
                 'books',
                 EntityType::class,

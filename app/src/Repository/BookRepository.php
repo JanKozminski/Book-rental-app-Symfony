@@ -65,15 +65,15 @@ class BookRepository extends ServiceEntityRepository
     /**
      * Find by title action.
      *
-     * @param $value
+     * @param string $value1 String from user input
      *
-     * @return float|int|mixed|string
+     * @return mixed Results of filter by title
      */
-    public function findByTitleField($value)
+    public function findByTitleField(string $value1): mixed
     {
         return $this->createQueryBuilder('t')
             ->Where('t.title LIKE :val')
-            ->setParameter('val', '%'.$value.'%')
+            ->setParameter('val', '%'.$value1.'%')
             ->orderBy('t.id', 'ASC')
             ->getQuery()
             ->getResult()
@@ -81,13 +81,13 @@ class BookRepository extends ServiceEntityRepository
     }
 
     /**
-     * Find by title action.
+     * Find by rating action.
      *
-     * @param $value
+     * @param string $value String from user input
      *
-     * @return float|int|mixed|string
+     * @return mixed Results of filter by rating
      */
-    public function findByRatingField($value)
+    public function findByRatingField(string $value): mixed
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.rating = :val')
@@ -101,12 +101,12 @@ class BookRepository extends ServiceEntityRepository
     /**
      * Find between two dates action.
      *
-     * @param $date1
-     * @param $date2
+     * @param string $date1 Date 1
+     * @param string $date2 Date 2
      *
-     * @return float|int|mixed|string
+     * @return mixed Result of filtering between two dates
      */
-    public function findByDateField($date1, $date2) // takes date
+    public function findByDateField(string $date1, string $date2): mixed
     {
         return $this->createQueryBuilder('t')
             ->where('t.release_date >= :date1')

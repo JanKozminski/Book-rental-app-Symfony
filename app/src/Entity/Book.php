@@ -42,6 +42,7 @@ class Book
      * Title.
      */
     #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255, maxMessage : 'Field should have maximum of {{ limit }} signs')]
     private ?string $title = null;
 
     /**
@@ -65,7 +66,8 @@ class Book
     /**
      * Description.
      */
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, length: 500)]
+    #[Assert\Length(max: 500, maxMessage: 'Field should have maximum of {{ limit }} signs')]
     private ?string $description = null;
 
     /**
@@ -82,6 +84,7 @@ class Book
      * Stock.
      */
     #[ORM\Column]
+    #[Assert\Type(type: 'integer', message: 'This field should be a integer type')]
     private ?int $stock = null;
 
     /**
@@ -133,11 +136,9 @@ class Book
      *
      * @param string|null $isbn Isbn
      */
-    public function setIsbn(string $isbn): self
+    public function setIsbn(string $isbn): void
     {
         $this->isbn = $isbn;
-
-        return $this;
     }
 
     /**
@@ -155,11 +156,9 @@ class Book
      *
      * @param string|null $title Title
      */
-    public function setTitle(string $title): self
+    public function setTitle(string $title): void
     {
         $this->title = $title;
-
-        return $this;
     }
 
     /**
@@ -177,11 +176,9 @@ class Book
      *
      * @param int|null $rating Rating
      */
-    public function setRating(int $rating): self
+    public function setRating(int $rating): void
     {
         $this->rating = $rating;
-
-        return $this;
     }
 
     /**
@@ -199,11 +196,9 @@ class Book
      *
      * @param int|null $pageNumber Page Number
      */
-    public function setPageNumber(int $pageNumber): self
+    public function setPageNumber(int $pageNumber): void
     {
         $this->pageNumber = $pageNumber;
-
-        return $this;
     }
 
     /**
@@ -221,11 +216,9 @@ class Book
      *
      * @param string|null $description Description
      */
-    public function setDescription(string $description): self
+    public function setDescription(string $description): void
     {
         $this->description = $description;
-
-        return $this;
     }
 
     /**
@@ -243,11 +236,9 @@ class Book
      *
      * @param \DateTimeImmutable|null $releaseDate Release Date
      */
-    public function setReleaseDate(\DateTimeInterface $releaseDate): self
+    public function setReleaseDate(\DateTimeInterface $releaseDate): void
     {
         $this->releaseDate = $releaseDate;
-
-        return $this;
     }
 
     /**
@@ -265,11 +256,9 @@ class Book
      *
      * @param int|null $stock Stock
      */
-    public function setStock(int $stock): self
+    public function setStock(int $stock): void
     {
         $this->stock = $stock;
-
-        return $this;
     }
 
     /**

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Book{% endblock %}
+{% block title %}{{ 'book.name'|trans }}{% endblock %}
 
 {% block body %}
     <h1 class="mt-4 mb-5">{{ book.title }}</h1>
@@ -68,12 +68,12 @@
         </div>
     </div>
 
-    <a href="{{ path('book_index') }}" class="btn btn-primary mt-3 mb-3 btn-sm"> <i class="fas fa-arrow-alt-circle-left"></i> Back to list</a>
+    <a href="{{ path('book_index') }}" class="btn btn-primary mt-3 mb-3 btn-sm"> <i class="fas fa-arrow-alt-circle-left"></i> {{ 'action.back_to_list'|trans }}</a>
 
     {#% if app.user and 'ROLE_ADMIN' in app.user.roles %#}
     {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('book_edit', {'id': book.id}) }}" class="btn btn-secondary mt-3 mb-3 btn-sm"> <i class="fas fa-edit"></i> Edit</a>
+        <a href="{{ path('book_edit', {'id': book.id}) }}" class="btn btn-secondary mt-3 mb-3 btn-sm"> <i class="fas fa-edit"></i> {{ 'action.edit'|trans }}</a>
 
-        {{ include('book/_delete_form.html.twig') }}
+        <a href="{{ path('book_delete', {'id': book.id}) }}" class="btn btn-block btn-danger mb-4 btn-sm"><i class="fas fa-arrow-alt-circle-left"></i> {{ 'action.delete'|trans }}</a>
     {% endif %}
 {% endblock %}

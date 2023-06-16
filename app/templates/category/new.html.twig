@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Category{% endblock %}
+{% block title %}{{ 'category.new'|trans }}{% endblock %}
 
 {% block body %}
 
@@ -10,7 +10,7 @@
 
             {{ include('category/_form.html.twig') }}
 
-            <a href="{{ path('category_index') }}" class="btn btn-primary mt-3 mb-3 btn-sm"> <i class="fas fa-arrow-alt-circle-left"></i> back to list</a>
+            <a href="{{ path('category_index') }}" class="btn btn-primary mt-3 mb-3 btn-sm"> <i class="fas fa-arrow-alt-circle-left"></i> {{ 'action.back_to_list'|trans }}</a>
 
         </div>
     </div>

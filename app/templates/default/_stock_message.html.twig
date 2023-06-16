@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.stock_message'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'stock_message'|trans }}</h1>
+
+    <div class="form-group row float-sm-left">
+        <a href="{{ url('book_home_page') }}" class="btn btn-link">
+            {{ 'action.back_to_list'|trans }}
+        </a>
+    </div>
+{% endblock %}

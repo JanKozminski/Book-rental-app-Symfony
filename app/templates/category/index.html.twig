@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}{{ 'title.index_category'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Genre index</h1>
+    <h1>{{ 'title.index_category'|trans }}</h1>
     {#% if app.user and 'ROLE_ADMIN' in app.user.roles %#}
     {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('category_new') }}" class="btn btn-primary mt-3 mb-3 btn-sm"><i class="fas fa-plus-circle"></i> Create new</a>
+        <a href="{{ path('category_new') }}" class="btn btn-primary mt-3 mb-3 btn-sm"><i class="fas fa-plus-circle"></i> {{ 'action.create_new'|trans }}</a>
     {% endif %}
     <table class="table table-striped">
         <thead>
@@ -22,9 +22,9 @@
                 <td>{{ val.id }}</td>
                 <td>{{ val.name }}</td>
                 <td>
-                    <a href="{{ path('category_show', {'id': val.id}) }}" class="btn btn-dark text-light btn-sm"><i class="fas fa-eye">show</i></a>
+                    <a href="{{ path('category_show', {'id': val.id}) }}" class="btn btn-dark text-light btn-sm"><i class="fas fa-eye">{{ 'action.show'|trans }}</i></a>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('category_edit', {'id': val.id}) }}" class="btn btn-secondary btn-sm"><i class="fas fa-edit">edit</i></a>
+                        <a href="{{ path('category_edit', {'id': val.id}) }}" class="btn btn-secondary btn-sm"><i class="fas fa-edit">{{ 'action.edit'|trans }}</i></a>
                     {% endif %}
                 </td>
             </tr>

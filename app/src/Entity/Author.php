@@ -32,6 +32,7 @@ class Author
      * Name.
      */
     #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255, maxMessage: 'Field should have maximum of {{ limit }} signs')]
     private ?string $name = null;
 
     /**
@@ -97,11 +98,9 @@ class Author
      *
      * @param string|null $name Name
      */
-    public function setName(string $name): self
+    public function setName(string $name): void
     {
         $this->name = $name;
-
-        return $this;
     }
 
     /**
@@ -119,11 +118,9 @@ class Author
      *
      * @param string|null $sex Sex
      */
-    public function setSex(string $sex): self
+    public function setSex(string $sex): void
     {
         $this->sex = $sex;
-
-        return $this;
     }
 
     /**
@@ -141,11 +138,9 @@ class Author
      *
      * @param \DateTimeImmutable|null $birthDate Birth Date
      */
-    public function setBirthDate(\DateTimeInterface $birthDate): self
+    public function setBirthDate(\DateTimeInterface $birthDate): void
     {
         $this->birthDate = $birthDate;
-
-        return $this;
     }
 
     /**

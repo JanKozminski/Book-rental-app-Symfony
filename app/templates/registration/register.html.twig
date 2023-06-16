@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{{ 'register.name'|trans }}{% endblock %}
 
 {% block body %}
     <div class="row">
@@ -14,7 +14,7 @@
             }) }}
             {{ form_row(registrationForm.agreeTerms) }}
 
-            <button type="submit" class="btn btn-sm btn-primary mt-4 mb-4">Register</button>
+            <button type="submit" class="btn btn-sm btn-primary mt-4 mb-4">{{ 'register.name'|trans }}</button>
             {{ form_end(registrationForm) }}
         </div>
     </div>

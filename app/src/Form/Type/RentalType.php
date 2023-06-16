@@ -7,6 +7,7 @@ namespace App\Form\Type;
 
 use App\Entity\Rental;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormTypeInterface;
@@ -30,8 +31,20 @@ class RentalType extends AbstractType implements FormTypeInterface
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('comment');
+            ->add(
+                'email',
+                TextType::class,
+                [
+                    'label' => 'rental.email',
+                ]
+            )
+            ->add(
+                'comment',
+                TextType::class,
+                [
+                    'label' => 'rental.comment',
+                ]
+            );
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 /**
- * User repository
+ * User repository.
  */
 
 namespace App\Repository;

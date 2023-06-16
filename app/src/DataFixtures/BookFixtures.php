@@ -38,7 +38,7 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             $book->setPageNumber($this->faker->numberBetween(15, 2000));
             $book->setRating($this->faker->numberBetween(0, 10));
             $book->setDescription($this->faker->text);
-            $book->setStock($this->faker->numberBetween(1, 15));
+            $book->setStock($this->faker->numberBetween(0, 15));
 
             $author = $this->getRandomReference('authors');
             $book->addAuthor($author);

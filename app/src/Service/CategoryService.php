@@ -31,7 +31,7 @@ class CategoryService
     /**
      * Find all categories action.
      *
-     * @return array
+     * @return array Array of results
      */
     public function findAllCategories(): array
     {

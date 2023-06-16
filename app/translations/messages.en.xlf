@@ -34,6 +34,10 @@
        <source>label.description</source>
        <target>Description</target>
       </trans-unit>
+      <trans-unit id="label.stock">
+        <source>label.stock</source>
+        <target>Stock</target>
+       </trans-unit>
       <trans-unit id="label.authors">
          <source>label.authors</source>
          <target>Authors</target>
@@ -51,7 +55,7 @@
         <target>Record not found.</target>
       </trans-unit>
       <trans-unit id="title.book_list">
-        <source>title.record_list</source>
+        <source>title.book_list</source>
         <target>Book index</target>
       </trans-unit>
       <trans-unit id="title.home_list">
@@ -66,6 +70,10 @@
         <source>title.author_list</source>
         <target>Author index</target>
       </trans-unit>
+       <trans-unit id="title.author_index">
+              <source>title.author_index</source>
+              <target>Author index</target>
+            </trans-unit>
       <trans-unit id="all.name">
           <source>all.name</source>
          <target>Name</target>
@@ -110,6 +118,287 @@
               <source>category.title</source>
                <target>Category index</target>
                </trans-unit>
+               <trans-unit id="label.delete_author">
+                <source>label.delete_author</source>
+                 <target>Delete Author</target>
+                  </trans-unit>
+                   <trans-unit id="action.delete">
+                    <source>action.delete</source>
+                    <target>Delete</target>
+                   </trans-unit>
+            <trans-unit id="message.form_error">
+              <source>message.form_error</source>
+               <target>Form error.</target>
+            </trans-unit>
+            <trans-unit id="title.author_delete">
+                    <source>title.author_delete</source>
+                    <target>Delete Author</target>
+                  </trans-unit>
+       <trans-unit id="title.category_delete">
+           <source>title.category_delete</source>
+              <target>Delete Category</target>
+            </trans-unit>
+            <trans-unit id="title.book_delete">
+              <source>title.book_delete</source>
+                <target>Delete Book</target>
+                 </trans-unit>
+                 <trans-unit id="title.rental_delete">
+                  <source>title.rental_delete</source>
+                  <target>Delete Rental</target>
+                    </trans-unit>
+            <trans-unit id="action.back_to_list">
+              <source>action.back_to_list</source>
+                <target>back to list</target>
+             </trans-unit>
+              <trans-unit id="title.stock_message">
+               <source>title.stock_message</source>
+                 <target>Not available</target>
+                 </trans-unit>
+                  <trans-unit id="stock_message">
+                    <source>stock_message</source>
+                    <target>This book is out of stock. Sorry.</target>
+                   </trans-unit>
+                   <trans-unit id="title.edit_author">
+                     <source>title.edit_author</source>
+                      <target>Edit Author</target>
+                    </trans-unit>
+                    <trans-unit id="title.edit_category">
+                       <source>title.edit_category</source>
+                       <target>Edit Category</target>
+                    </trans-unit>
+                    <trans-unit id="title.index_category">
+                      <source>title.index_category</source>
+                      <target>Category Index</target>
+                    </trans-unit>
+                    <trans-unit id="action.show">
+                       <source>action.show</source>
+                      <target>show</target>
+                       </trans-unit>
+                       <trans-unit id="action.edit">
+                      <source>action.edit</source>
+                       <target>edit</target>
+                       </trans-unit>
+                       <trans-unit id="author.new">
+                        <source>author.new</source>
+                         <target>New Author</target>
+                       </trans-unit>
+                       <trans-unit id="create.new.author">
+                          <source>create.new.author</source>
+                          <target>Create new Author</target>
+                       </trans-unit>
+                       <trans-unit id="category.name">
+                         <source>category.name</source>
+                         <target>Category</target>
+                       </trans-unit>
+                       <trans-unit id="book.edit">
+                         <source>book.edit</source>
+                         <target>Edit Book</target>
+                       </trans-unit>
+                       <trans-unit id="action.create_new">
+                          <source>action.create_new</source>
+                          <target>Create new</target>
+                       </trans-unit>
+                       <trans-unit id="book.new">
+                          <source>book.new</source>
+                          <target>New Book</target>
+                       </trans-unit>
+                       <trans-unit id="create.new.book">
+                         <source>create.new.book</source>
+                         <target>Create new Book</target>
+                       </trans-unit>
+                       <trans-unit id="book.name">
+                          <source>book.name</source>
+                          <target>Book</target>
+                       </trans-unit>
+                       <trans-unit id="category.new">
+                         <source>category.new</source>
+                         <target>New Category</target>
+                       </trans-unit>
+                       <trans-unit id="register.name">
+                         <source>register.name</source>
+                         <target>Register</target>
+                       </trans-unit>
+                       <trans-unit id="rental.index">
+                         <source>rental.index</source>
+                        <target>Rental index</target>
+                         </trans-unit>
+                         <trans-unit id="rental.new">
+                             <source>rental.new</source>
+                              <target>New Rental</target>
+                         </trans-unit>
+                         <trans-unit id="create.rental">
+                            <source>create.rental</source>
+                            <target>Create new Rental</target>
+                         </trans-unit>
+                         <trans-unit id="my.rentals">
+                            <source>my.rentals</source>
+                            <target>My rentals</target>
+                         </trans-unit>
+                         <trans-unit id="rental.name">
+                           <source>rental.name</source>
+                           <target>Rental</target>
+                         </trans-unit>
+                         <trans-unit id="log.message">
+                           <source>log.message</source>
+                           <target>Log in!</target>
+                         </trans-unit>
+                         <trans-unit id="log.info">
+                           <source>log.info</source>
+                           <target>Please sign in!</target>
+                         </trans-unit>
+                         <trans-unit id="password">
+                           <source>password</source>
+                           <target>Password</target>
+                         </trans-unit>
+                         <trans-unit id="sign.in">
+                           <source>sign.in</source>
+                           <target>Sign in</target>
+                         </trans-unit>
+                         <trans-unit id="welcome">
+                           <source>welcome</source>
+                           <target>Welcome!</target>
+                         </trans-unit>
+                         <trans-unit id="action.change">
+                           <source>action.change</source>
+                           <target>Change</target>
+                         </trans-unit>
+                          <trans-unit id="change.password">
+                             <source>change.password</source>
+                             <target>Change Password</target>
+                          </trans-unit>
+                          <trans-unit id="message.password_incorrect">
+                             <source>message.password_incorrect</source>
+                             <target>Incorrect password</target>
+                          </trans-unit>
+                          <trans-unit id="message.password_changed">
+                             <source>message.password_changed</source>
+                             <target>Password changed</target>
+                          </trans-unit>
+                          <trans-unit id="label.old.password">
+                           <source>label.old.password</source>
+                           <target>Old password</target>
+                          </trans-unit>
+                          <trans-unit id="label.new_password">
+                           <source>label.new_password</source>
+                           <target>New Password</target>
+                          </trans-unit>
+                          <trans-unit id="nav.books">
+                              <source>nav.books</source>
+                              <target>Books</target>
+                           </trans-unit>
+                           <trans-unit id="nav.authors">
+                             <source>nav.authors</source>
+                             <target>Authors</target>
+                           </trans-unit>
+                           <trans-unit id="nav.categories">
+                            <source>nav.categories</source>
+                            <target>Categories</target>
+                           </trans-unit>
+                           <trans-unit id="nav.my_rentals">
+                              <source>nav.my_rentals</source>
+                              <target>My rentals</target>
+                            </trans-unit>
+                            <trans-unit id="nav.rentals">
+                             <source>nav.rentals</source>
+                             <target>Manage Rentals</target>
+                            </trans-unit>
+                            <trans-unit id="nav.home">
+                              <source>nav.home</source>
+                              <target>HOME</target>
+                            </trans-unit>
+                            <trans-unit id="menu.register">
+                              <source>menu.register</source>
+                              <target>Register</target>
+                            </trans-unit>
+                            <trans-unit id="menu.logout">
+                              <source>menu.logout</source>
+                              <target>Logout</target>
+                            </trans-unit>
+                            <trans-unit id="menu.login">
+                              <source>menu.login</source>
+                              <target>Login</target>
+                             </trans-unit>
+                             <trans-unit id="main.title">
+                               <source>main.title</source>
+                                <target>Book Rental App by J.Kozminski</target>
+                             </trans-unit>
+                             <trans-unit id="book.available">
+                                <source>book.available</source>
+                                <target>books available</target>
+                             </trans-unit>
+                             <trans-unit id="now.available">
+                               <source>now.available</source>
+                               <target>now available</target>
+                             </trans-unit>
+                              <trans-unit id="or">
+                                 <source>or</source>
+                                 <target>or</target>
+                              </trans-unit>
+                              <trans-unit id="create.an.account">
+                                 <source>create.an.account</source>
+                                  <target>create an account</target>
+                               </trans-unit>
+                               <trans-unit id="to.have.more.options">
+                                 <source>to.have.more.options</source>
+                                 <target>to have more options.</target>
+                               </trans-unit>
+                               <trans-unit id="main.filters">
+                                  <source>main.filters</source>
+                                  <target>Filters</target>
+                               </trans-unit>
+                               <trans-unit id="key.word">
+                                  <source>key.word</source>
+                                  <target>Search with a key word</target>
+                                </trans-unit>
+                                <trans-unit id="book.dates">
+                                   <source>book.dates</source>
+                                   <target>Get the books published between two dates</target>
+                                </trans-unit>
+                                <trans-unit id="filter.author">
+                                  <source>filter.author</source>
+                                  <target>Get the books of an author</target>
+                                </trans-unit>
+                                <trans-unit id="filter.category">
+                                   <source>filter.category</source>
+                                   <target>Get the books that belongs to a category</target>
+                                 </trans-unit>
+                                  <trans-unit id="filter.rating">
+                                    <source>filter.rating</source>
+                                    <target>Get the books by their rating</target>
+                                  </trans-unit>
+                                  <trans-unit id="pages">
+                                    <source>pages</source>
+                                    <target>pages</target>
+                                   </trans-unit>
+                                   <trans-unit id="show.more">
+                                    <source>show.more</source>
+                                    <target>Show more</target>
+                                   </trans-unit>
+                                   <trans-unit id="rent.button">
+                                     <source>rent.button</source>
+                                     <target>Rent</target>
+                                   </trans-unit>
+                                   <trans-unit id="action.return">
+                                     <source>action.return</source>
+                                     <target>Return</target>
+                                   </trans-unit>
+                                   <trans-unit id="author.author">
+                                     <source>author.author</source>
+                                     <target>Name</target>
+                                    </trans-unit>
+                                     <trans-unit id="by">
+                                      <source>by</source>
+                                       <target>by:</target>
+                                      </trans-unit>
+                                      <trans-unit id="type.title">
+                                        <source>type.title</source>
+                                         <target>Type in a title</target>
+                                      </trans-unit>
+                                      <trans-unit id="message.book_contains_rental">
+                                        <source>message.book_contains_rental</source>
+                                        <target>Book contains rental</target>
+                                      </trans-unit>
+
     </body>
   </file>
 </xliff>

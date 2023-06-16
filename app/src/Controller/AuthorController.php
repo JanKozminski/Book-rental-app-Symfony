@@ -10,6 +10,7 @@ use App\Entity\Author;
 use App\Service\AuthorService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -48,6 +49,7 @@ class AuthorController extends AbstractController
             'author' => $this->authorService->findAllAuthors(),
         ]);
     }
+
     /**
      * Create action.
      *
@@ -73,6 +75,7 @@ class AuthorController extends AbstractController
             'form' => $form,
         ]);
     }
+
     /**
      * Show action.
      *
@@ -113,6 +116,7 @@ class AuthorController extends AbstractController
             'form' => $form,
         ]);
     }
+
     /**
      * Delete action.
      *
@@ -121,13 +125,31 @@ class AuthorController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/delete', name: 'author_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'author_delete', methods: ['GET|DELETE'])]
     public function delete(Request $request, Author $author): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$author->getId(), $request->request->get('_token'))) {
+        $form = $this->createForm(
+            FormType::class,
+            $author,
+            [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('author_delete', ['id' => $author->getId()]),
+            ]
+        );
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->authorService->delete($author);
+
+            return $this->redirectToRoute('author_index');
         }
 
-        return $this->redirectToRoute('author_index', [], Response::HTTP_SEE_OTHER);
+        return $this->render(
+            'author/_delete_form.html.twig',
+            [
+                'form' => $form->createView(),
+                'author' => $author,
+            ]
+        );
     }
 }

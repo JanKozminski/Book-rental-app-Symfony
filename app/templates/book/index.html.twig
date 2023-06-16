@@ -5,7 +5,7 @@
 {% block body %}
     <h1>{{ 'title.book_table'|trans }}</h1>
     {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('book_new') }}" class="btn btn-primary mt-3 mb-3 btn-sm"> <i class="fas fa-plus-circle"></i> Create new</a>
+        <a href="{{ path('book_new') }}" class="btn btn-primary mt-3 mb-3 btn-sm"> <i class="fas fa-plus-circle"></i> {{ 'action.create_new'|trans }}</a>
     {% endif %}
     <table class="table table-striped">
         <thead>
@@ -16,7 +16,8 @@
             <th>{{ 'label.pages'|trans }}</th>
             <th>{{ 'label.date'|trans }}</th>
             <th>{{ 'label.rating'|trans }}</th>
-             <th>{{ 'label.description'|trans }}</th>
+            <th>{{ 'label.stock'|trans }}</th>
+            <th>{{ 'label.description'|trans }}</th>
             <th>{{ 'all.actions'|trans }}</th>
         </tr>
         </thead>
@@ -29,13 +30,14 @@
                 <td>{{ val.pageNumber }}</td>
                 <td>{{ val.releaseDate ? val.releaseDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ val.rating }}</td>
+                <td>{{ val.stock }}</td>
+                <td>{{ val.description }}</td>
 
-                 <td>{{ val.description }}</td>
 
                 <td>
-                    <a href="{{ path('book_show', {'id': val.id}) }}" class="btn btn-dark text-light btn-sm"> <i class="fas fa-eye">show</i></a>
+                    <a href="{{ path('book_show', {'id': val.id}) }}" class="btn btn-dark text-light btn-sm"> <i class="fas fa-eye">{{ 'action.show'|trans }}</i></a>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('book_edit', {'id': val.id}) }} " class="btn btn-secondary btn-sm"><i class="fas fa-edit">edit</i></a>
+                        <a href="{{ path('book_edit', {'id': val.id}) }} " class="btn btn-secondary btn-sm"><i class="fas fa-edit">{{ 'action.edit'|trans }}</i></a>
                     {% endif %}
                 </td>
             </tr>

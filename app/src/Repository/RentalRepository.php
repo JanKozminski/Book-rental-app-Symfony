@@ -5,9 +5,13 @@
 
 namespace App\Repository;
 
+use App\Entity\Book;
 use App\Entity\Rental;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @extends ServiceEntityRepository<Rental>
@@ -54,11 +58,11 @@ class RentalRepository extends ServiceEntityRepository
     /**
      * Show rentals for user action.
      *
-     * @param $userId
+     * @param int $userId User Id
      *
-     * @return float|int|mixed|string
+     * @return mixed Result
      */
-    public function showRentals($userId)
+    public function showRentals(int $userId): mixed
     {
         return $this->createQueryBuilder('e')
             ->where('e.user = :userId')
@@ -66,6 +70,39 @@ class RentalRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * Count tasks by category.
+     *
+     * @param Book $book Book
+     *
+     * @return int Number of rentals in book
+     *
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
+    public function countByBook(Book $book): int
+    {
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('rental.id'))
+            ->where('rental.book = :book')
+            ->setParameter(':book', $book)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('rental');
     }
 
 //    /**
