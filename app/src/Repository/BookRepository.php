@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Book repository.
  */
@@ -47,8 +48,8 @@ class BookRepository extends ServiceEntityRepository
      */
     public function save(Book $book): void
     {
-        $this->_em->persist($book);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($book);
+        $this->getEntityManager()->flush();
     }
 
     /**
@@ -58,8 +59,8 @@ class BookRepository extends ServiceEntityRepository
      */
     public function delete(Book $book): void
     {
-        $this->_em->remove($book);
-        $this->_em->flush();
+        $this->getEntityManager()->remove($book);
+        $this->getEntityManager()->flush();
     }
 
     /**
@@ -120,28 +121,28 @@ class BookRepository extends ServiceEntityRepository
         ;
     }
 
-//    /**
-//     * @return Book[] Returns an array of Book objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('k')
-//            ->andWhere('k.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('k.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Book[] Returns an array of Book objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('k')
+    //            ->andWhere('k.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('k.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?Book
-//    {
-//        return $this->createQueryBuilder('k')
-//            ->andWhere('k.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Book
+    //    {
+    //        return $this->createQueryBuilder('k')
+    //            ->andWhere('k.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

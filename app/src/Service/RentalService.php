@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Rental service.
  */
@@ -82,7 +83,7 @@ class RentalService
     {
         $stock = $value->getStock();
 
-        if (0 != $stock) {
+        if (0 !== $stock) {
             return true;
         }
 

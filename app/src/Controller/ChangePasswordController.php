@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Change password controller.
  */

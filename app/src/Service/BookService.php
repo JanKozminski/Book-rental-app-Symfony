@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Book service.
  */
@@ -160,22 +161,30 @@ class BookService
     {
         if ($request->get('keywords')) {
             return $this->bookRepository->findByTitleField($request->query->get('keywords'));
-        } elseif ($request->query->get('rating')) {
+        }
+
+        if ($request->get('rating')) {
             return $this->bookRepository->findByRatingField($request->query->get('rating'));
-        } elseif ($request->query->get('date1') && $request->query->get('date2')) {
+        }
+
+        if ($request->get('date1') && $request->get('date2')) {
             return $this->bookRepository->findByDateField($request->query->get('date1'), $request->query->get('date2'));
-        } elseif ($request->query->get('author')) {
+        }
+
+        if ($request->get('author')) {
             $id = $request->query->get('author');
             $author = $this->authorRepository->find($id);
 
             return $author->getBooks();
-        } elseif ($request->query->get('category')) {
+        }
+
+        if ($request->get('category')) {
             $id = $request->query->get('category');
             $category = $this->categoryRepository->find($id);
 
             return $category->getBooks();
-        } else {
-            return $this->bookRepository->findAll();
         }
+
+        return $this->bookRepository->findAll();
     }
 }

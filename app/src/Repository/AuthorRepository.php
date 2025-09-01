@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Author repository.
  */
@@ -36,8 +37,8 @@ class AuthorRepository extends ServiceEntityRepository
      */
     public function save(Author $author): void
     {
-        $this->_em->persist($author);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($author);
+        $this->getEntityManager()->flush();
     }
 
     /**
@@ -47,32 +48,32 @@ class AuthorRepository extends ServiceEntityRepository
      */
     public function delete(Author $author): void
     {
-        $this->_em->remove($author);
-        $this->_em->flush();
+        $this->getEntityManager()->remove($author);
+        $this->getEntityManager()->flush();
     }
 
-//    /**
-//     * @return Author[] Returns an array of Author objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Author[] Returns an array of Author objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('a.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?Author
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Author
+    //    {
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

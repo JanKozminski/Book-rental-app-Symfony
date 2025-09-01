@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Rental repository.
  */
@@ -40,8 +41,8 @@ class RentalRepository extends ServiceEntityRepository
      */
     public function save(Rental $rental): void
     {
-        $this->_em->persist($rental);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($rental);
+        $this->getEntityManager()->flush();
     }
 
     /**
@@ -51,8 +52,8 @@ class RentalRepository extends ServiceEntityRepository
      */
     public function delete(Rental $rental): void
     {
-        $this->_em->remove($rental);
-        $this->_em->flush();
+        $this->getEntityManager()->remove($rental);
+        $this->getEntityManager()->flush();
     }
 
     /**
@@ -100,33 +101,33 @@ class RentalRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('rental');
     }
 
-//    /**
-//     * @return Rental[] Returns an array of Rental objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Rental[] Returns an array of Rental objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('r')
+    //            ->andWhere('r.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('r.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?Rental
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Rental
+    //    {
+    //        return $this->createQueryBuilder('r')
+    //            ->andWhere('r.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

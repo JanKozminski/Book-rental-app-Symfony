@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Author fixtures.
  */
@@ -26,10 +27,10 @@ class AuthorFixtures extends AbstractBaseFixtures
             $autor = new Author();
             $sex = $this->faker->randomElement($array = ['male', 'female']);
             $autor->setName($this->faker->unique()->name($sex));
-            if ('male' == $sex) {
+            if ('male' === $sex) {
                 $autor->setSex('M');
             }
-            if ('female' == $sex) {
+            if ('female' === $sex) {
                 $autor->setSex('F');
             }
             $autor->setBirthDate(

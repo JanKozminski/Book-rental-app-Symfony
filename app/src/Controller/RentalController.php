@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Rental controller.
  */
@@ -134,7 +135,7 @@ class RentalController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/rental/{id}/delete', name: 'rental_delete', methods: ['GET|DELETE'])]
+    #[Route('/rental/{id}/delete', name: 'rental_delete', methods: ['GET', 'DELETE'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Rental $rental): Response
     {

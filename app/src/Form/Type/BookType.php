@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Book type.
  */
@@ -82,19 +83,19 @@ class BookType extends AbstractType implements FormTypeInterface
                 'author',
                 EntityType::class,
                 ['class' => Author::class,
-                'choice_label' => function ($author): string {
-                    return $author->getName();
-                }, 'multiple' => true, 'label' => 'label.authors',  ]
+                    'choice_label' => function ($author): string {
+                        return $author->getName();
+                    }, 'multiple' => true, 'label' => 'label.authors',  ]
             )
             ->add(
                 'category',
                 EntityType::class,
                 ['class' => Category::class,
-                'choice_label' => function ($category): string {
-                    return $category->getName();
-                },
-                'multiple' => true,
-                'label' => 'label.categories',
+                    'choice_label' => function ($category): string {
+                        return $category->getName();
+                    },
+                    'multiple' => true,
+                    'label' => 'label.categories',
                 ]
             )
         ;

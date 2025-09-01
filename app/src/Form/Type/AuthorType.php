@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Author type.
  */
@@ -51,7 +52,7 @@ class AuthorType extends AbstractType
                 'birthDate',
                 DateType::class,
                 ['widget' => 'single_text',
-                 'label' => 'author.date',
+                    'label' => 'author.date',
                 ]
             )
             ->add(
@@ -65,10 +66,10 @@ class AuthorType extends AbstractType
                 'books',
                 EntityType::class,
                 ['class' => Book::class,
-                'choice_label' => function ($book): string {
-                    return $book->getTitle();
-                },
-                'multiple' => true, ]
+                    'choice_label' => function ($book): string {
+                        return $book->getTitle();
+                    },
+                    'multiple' => true, ]
             )
         ;
     }
