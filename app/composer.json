@@ -118,19 +118,19 @@
         }
     },
     "require-dev": {
-        "dama/doctrine-test-bundle": "^8.3",
+        "dama/doctrine-test-bundle": "*",
         "doctrine/doctrine-fixtures-bundle": "*",
         "escapestudios/symfony2-coding-standard": "*",
         "fakerphp/faker": "*",
         "friendsofphp/php-cs-fixer": "*",
-        "phpunit/phpunit": "~10.5",
+        "phpunit/phpunit": "^9.5",
         "rector/rector": "^2.0",
         "squizlabs/php_codesniffer": "*",
         "symfony/browser-kit": "6.4.*",
         "symfony/css-selector": "6.4.*",
         "symfony/debug-bundle": "6.4.*",
         "symfony/maker-bundle": "*",
-        "symfony/phpunit-bridge": "^7.3",
+        "symfony/phpunit-bridge": "^7.2",
         "symfony/stopwatch": "6.4.*",
         "symfony/web-profiler-bundle": "6.4.*"
     }
