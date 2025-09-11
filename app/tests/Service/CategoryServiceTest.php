@@ -21,6 +21,9 @@ class CategoryServiceTest extends KernelTestCase
     private ?EntityManagerInterface $entityManager;
     private ?CategoryService $categoryService;
 
+    /**
+     * Set up tests.
+     */
     protected function setUp(): void
     {
         $container = static::getContainer();

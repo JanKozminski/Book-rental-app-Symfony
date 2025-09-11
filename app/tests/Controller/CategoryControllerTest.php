@@ -26,6 +26,9 @@ class CategoryControllerTest extends WebTestCase
     private KernelBrowser $httpClient;
     private EntityManagerInterface $entityManager;
 
+    /**
+     * Set up tests.
+     */
     protected function setUp(): void
     {
         $this->httpClient = static::createClient();
@@ -133,6 +136,10 @@ class CategoryControllerTest extends WebTestCase
 
     /**
      * Create fake user.
+     *
+     * @param array $roles Array of user roles
+     *
+     * @return User The created User entity
      */
     private function createUser(array $roles): User
     {
@@ -149,6 +156,8 @@ class CategoryControllerTest extends WebTestCase
 
     /**
      * Create test category.
+     *
+     * @return Category The created Category entity
      */
     private function createCategory(): Category
     {

@@ -153,7 +153,7 @@ class BookControllerTest extends WebTestCase
      *
      * @param array $roles Roles to assign
      *
-     * @return User
+     * @return User The created User entity
      */
     private function createUser(array $roles): User
     {
@@ -171,7 +171,7 @@ class BookControllerTest extends WebTestCase
     /**
      * Create test book entity.
      *
-     * @return Book
+     * @return Book The created Book entity
      */
     private function createBook(): Book
     {

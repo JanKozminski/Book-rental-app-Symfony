@@ -96,9 +96,9 @@ class AuthorControllerTest extends WebTestCase
     /**
      * Create test user.
      *
-     * @param array $roles
+     * @param array $roles Array of user roles
      *
-     * @return User
+     * @return User The created User entity
      *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
@@ -125,7 +125,7 @@ class AuthorControllerTest extends WebTestCase
     /**
      * Create author helper.
      *
-     * @return Author
+     * @return Author The created Author entity
      *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface

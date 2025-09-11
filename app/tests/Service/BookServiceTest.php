@@ -21,6 +21,9 @@ class BookServiceTest extends KernelTestCase
     private ?EntityManagerInterface $entityManager;
     private ?BookService $bookService;
 
+    /**
+     * Set up tests.
+     */
     protected function setUp(): void
     {
         $container = static::getContainer();

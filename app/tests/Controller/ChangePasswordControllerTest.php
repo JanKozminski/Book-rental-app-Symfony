@@ -18,7 +18,9 @@ class ChangePasswordControllerTest extends WebTestCase
     private KernelBrowser $httpClient;
 
 
-
+    /**
+     * Set up tests.
+     */
     protected function setUp(): void
     {
         $this->httpClient = static::createClient();
@@ -31,12 +33,11 @@ class ChangePasswordControllerTest extends WebTestCase
     public function testChangePasswordFormAccess(): void
     {
         // given
-        $client = static::createClient();
-        $user = $this->createUser();
-        $client->loginUser($user);
+        $user = $this->createUser([UserRole::ROLE_USER->value], 'test123');
+        $this->httpClient->loginUser($user);
 
         // when
-        $client->request('GET', '/change-password');
+        $this->httpClient->request('GET', '/change-password');
 
         // then
         $this->assertResponseIsSuccessful();
@@ -59,11 +60,10 @@ class ChangePasswordControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('form');
 
-        
+
         $form = $crawler->filter('form')->form([
             'change_password[oldPassword]' => 'test123',
-            'change_password[newPassword][first]' => 'newpass456',
-            'change_password[newPassword][second]' => 'newpass456',
+            'change_password[newPassword]' => 'newpass456',
         ]);
 
         $this->httpClient->submit($form);
@@ -74,6 +74,9 @@ class ChangePasswordControllerTest extends WebTestCase
 
     /**
      * Helper method to create a user.
+     *
+     * @param array  $roles   Array of roles to assign to the user
+     * @param string $password Plain text password to be hashed
      *
      * @return User Created user
      */
