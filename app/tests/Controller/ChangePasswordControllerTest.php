@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * ChangePassword controller test.
+ */
+
 namespace App\Tests\Controller;
 
 use App\Entity\Enum\UserRole;

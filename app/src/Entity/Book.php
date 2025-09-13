@@ -35,7 +35,7 @@ class Book
     #[ORM\Column(length: 255)]
     #[Assert\Isbn(
         type: Assert\Isbn::ISBN_13,
-        message: 'This value isn`t right with ISBN13.',
+        message: 'book.isbn.invalid',
     )]
     private ?string $isbn = null;
 
@@ -43,7 +43,7 @@ class Book
      * Title.
      */
     #[ORM\Column(length: 255)]
-    #[Assert\Length(max: 255, maxMessage : 'Field should have maximum of {{ limit }} signs')]
+    #[Assert\Length(max: 255, maxMessage : 'book.title.too_long')]
     private ?string $title = null;
 
     /**
@@ -51,7 +51,7 @@ class Book
      */
     #[ORM\Column]
     #[Assert\Range(
-        notInRangeMessage: 'Rating doesn`t fit between  {{ min }} and {{ max }}.',
+        notInRangeMessage: 'book.rating.out_of_range',
         min: 0,
         max: 10,
     )]
@@ -68,7 +68,7 @@ class Book
      * Description.
      */
     #[ORM\Column(type: Types::TEXT, length: 500)]
-    #[Assert\Length(max: 500, maxMessage: 'Field should have maximum of {{ limit }} signs')]
+    #[Assert\Length(max: 500, maxMessage: 'book.description.too_long')]
     private ?string $description = null;
 
     /**

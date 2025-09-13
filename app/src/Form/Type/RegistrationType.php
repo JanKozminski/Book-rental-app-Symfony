@@ -47,7 +47,7 @@ class RegistrationType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'registration.terms',
                     ]),
                 ],
             ])
@@ -56,11 +56,11 @@ class RegistrationType extends AbstractType
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'registration.password.not_blank',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'registration.password.too_short',
                         'max' => 4096,
                     ]),
                 ],
