@@ -86,18 +86,6 @@
             <source>author.date</source>
             <target>Birth date</target>
          </trans-unit>
-         <trans-unit id="registration.terms">
-            <source>registration.terms</source>
-            <target>You should agree to our terms.</target>
-         </trans-unit>
-         <trans-unit id="registration.password.not_blank">
-           <source>registration.password.not_blank</source>
-           <target>Please enter a password</target>
-         </trans-unit>
-         <trans-unit id="registration.password.too_short">
-            <source>registration.password.too_short</source>
-            <target>Your password should be at least 6 characters</target>
-         </trans-unit>
          <trans-unit id="author.country">
             <source>author.country</source>
             <target>Country of origin</target>
@@ -110,22 +98,6 @@
               <source>rental.email</source>
               <target>Email</target>
           </trans-unit>
-          <trans-unit id="book.isbn.invalid">
-          <source>book.isbn.invalid</source>
-          <target>This value isn`t right with ISBN13.</target>
-       </trans-unit>
-       <trans-unit id="book.title.too_long">
-          <source>book.title.too_long</source>
-          <target>Field should have maximum of 255 signs</target>
-       </trans-unit>
-      <trans-unit id="book.rating.out_of_range">
-        <source>book.rating.out_of_range</source>
-        <target>Rating doesnt fit between  0 and 10.</target>
-           </trans-unit>
-        <trans-unit id="book.description.too_long">
-            <source>book.description.too_long</source>
-            <target>Field should have maximum of 500 signs</target>
-        </trans-unit>
             <trans-unit id="rental.comment">
               <source>rental.comment</source>
               <target>Comment</target>

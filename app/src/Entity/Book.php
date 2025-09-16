@@ -85,7 +85,7 @@ class Book
      * Stock.
      */
     #[ORM\Column]
-    #[Assert\Type(type: 'integer', message: 'This field should be a integer type')]
+    #[Assert\Type(type: 'integer', message: 'book.stock.type_int')]
     private ?int $stock = null;
 
     /**

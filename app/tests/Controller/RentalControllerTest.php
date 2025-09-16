@@ -16,6 +16,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 
+/**
+ * Class RentalControllerTest.
+ */
 class RentalControllerTest extends WebTestCase
 {
     private KernelBrowser $httpClient;
@@ -105,6 +108,7 @@ class RentalControllerTest extends WebTestCase
         $book = new Book();
         $book->setTitle('Test Book');
         $book->setStock(1);
+        $book->setIsbn('978-3-16-148410-0');
 
         $user = $this->createUser([UserRole::ROLE_USER->value]);
 

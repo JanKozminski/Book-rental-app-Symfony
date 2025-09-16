@@ -37,7 +37,7 @@ class Rental
      * Comment.
      */
     #[ORM\Column(length: 255)]
-    #[Assert\Length(max: 255, maxMessage: 'Field should have maximum of {{ limit }} signs')]
+    #[Assert\Length(max: 255, maxMessage: 'category.name.length')]
     private ?string $comment = null;
 
     /**

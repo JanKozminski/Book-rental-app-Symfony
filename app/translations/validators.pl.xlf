@@ -1,0 +1,36 @@
+    <trans-unit id="registration.terms">
+      <source>registration.terms</source>
+      <target>Zgódź się na nasze warunki.</target>
+    </trans-unit>
+    <trans-unit id="registration.password.not_blank">
+     <source>registration.password.not_blank</source>
+     <target>Proszę wprowadź hasło</target>
+    </trans-unit>
+    <trans-unit id="registration.password.too_short">
+      <source>registration.password.too_short</source>
+      <target>Twoje hasło musi zawierać conajmniej 6 znaków</target>
+    </trans-unit>
+    <trans-unit id="book.isbn.invalid">
+     <source>book.isbn.invalid</source>
+     <target>Wartość nie jest poprawnym numerem ISBN-13.</target>
+    </trans-unit>
+    <trans-unit id="book.title.too_long">
+     <source>book.title.too_long</source>
+     <target>Pole może mieć maksymalnie 255 znaków.</target>
+    </trans-unit>
+    <trans-unit id="book.rating.out_of_range">
+    <source>book.rating.out_of_range</source>
+    <target>Ocena musi mieścić się w zakresie od 0 do 10.</target>
+      </trans-unit>
+    <trans-unit id="book.description.too_long">
+       <source>book.description.too_long</source>
+       <target>Pole musi zawierać do 500 znaków.</target>
+    </trans-unit>
+    <trans-unit id="book.stock.type_int">
+         <source>book.stock.type_int</source>
+         <target>Pole musi być typem int.</target>
+    </trans-unit>
+    <trans-unit id="category.name.length">
+          <source>category.name.length</source>
+          <target>Pole może mieć maksymalnie 255 znaków.</target>
+    </trans-unit>
