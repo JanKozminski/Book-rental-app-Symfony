@@ -1,3 +1,7 @@
+    <?xml version="1.0"?>
+    <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+      <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
     <trans-unit id="book.isbn.invalid">
       <source>book.isbn.invalid</source>
       <target>This value isn`t right with ISBN13.</target>
@@ -34,4 +38,6 @@
           <source>category.name.length</source>
           <target>Field should have maximum of 255 signs</target>
      </trans-unit>
-
+    </body>
+  </file>
+</xliff>

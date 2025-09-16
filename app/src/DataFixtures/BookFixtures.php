@@ -6,7 +6,9 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Author;
 use App\Entity\Book;
+use App\Entity\Category;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
@@ -40,10 +42,14 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             $book->setDescription($this->faker->text);
             $book->setStock($this->faker->numberBetween(0, 15));
 
-            $author = $this->getRandomReference('authors');
+            $author = new Author();
+            $author->setName($this->faker->name);
+            $this->manager->persist($author);
             $book->addAuthor($author);
 
-            $category = $this->getRandomReference('categories');
+            $category = new Category();
+            $category->setName($this->faker->word);
+            $this->manager->persist($category);
             $book->addCategory($category);
 
             return $book;

@@ -107,8 +107,12 @@ class RentalControllerTest extends WebTestCase
     {
         $book = new Book();
         $book->setTitle('Test Book');
-        $book->setStock(1);
-        $book->setIsbn('978-3-16-148410-0');
+        $book->setIsbn('1234567890123');
+        $book->setStock(5);
+        $book->setRating(4);
+        $book->setPageNumber(250);
+        $book->setDescription('Sample description.');
+        $book->setReleaseDate(new \DateTimeImmutable('2023-01-01'));
 
         $user = $this->createUser([UserRole::ROLE_USER->value]);
 
