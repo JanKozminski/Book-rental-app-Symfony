@@ -8,6 +8,7 @@ namespace App\Tests\Repository;
 
 use App\Entity\Author;
 use App\Repository\AuthorRepository;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -45,7 +46,10 @@ class AuthorRepositoryTest extends KernelTestCase
     {
         // given
         $author = new Author();
-        $author->setName('John Doe');
+        $author->setName('Jane Doe');
+        $author->setSex('F');
+        $author->setBirthDate(new DateTimeImmutable('1990-04-20'));
+        $author->setCountryOfOrigin('Poland');
 
         // when
         $this->repository->save($author);
@@ -64,6 +68,9 @@ class AuthorRepositoryTest extends KernelTestCase
         // given
         $author = new Author();
         $author->setName('Jane Doe');
+        $author->setSex('F');
+        $author->setBirthDate(new DateTimeImmutable('1990-04-20'));
+        $author->setCountryOfOrigin('Poland');
         $this->repository->save($author);
         $id = $author->getId();
 

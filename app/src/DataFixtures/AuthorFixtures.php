@@ -25,7 +25,7 @@ class AuthorFixtures extends AbstractBaseFixtures
     {
         $this->createMany(20, 'authors', function (int $i) {
             $autor = new Author();
-            $sex = $this->faker->randomElement($array = ['male', 'female']);
+            $sex = $this->faker->randomElement($array = ['M', 'F']);
             $autor->setName($this->faker->unique()->name($sex));
             if ('male' === $sex) {
                 $autor->setSex('M');
