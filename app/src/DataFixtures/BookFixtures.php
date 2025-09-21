@@ -46,9 +46,11 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             $author->setName($this->faker->name);
             $sex = $this->faker->randomElement(['M', 'F']);
             $author->setSex($sex);
-            $date = \DateTimeImmutable::createFromMutable(
-                $this->faker->dateTimeBetween('-156324 days', '-1 days'));
-            $author->setBirthDate($date);
+            $author->setBirthDate(
+                \DateTimeImmutable::createFromMutable(
+                    $this->faker->dateTimeBetween('-156324 days', '-1 days')
+                )
+            );
             $author->setCountryOfOrigin($this->faker->country);
             $this->manager->persist($author);
             $book->addAuthor($author);

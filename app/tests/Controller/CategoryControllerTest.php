@@ -57,7 +57,7 @@ class CategoryControllerTest extends WebTestCase
         $this->httpClient->loginUser($user);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE. '/');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/');
 
         // then
         $this->assertResponseIsSuccessful();

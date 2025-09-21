@@ -104,4 +104,3 @@ class AuthorRepositoryTest extends KernelTestCase
         $this->entityManager = null;
     }
 }
-

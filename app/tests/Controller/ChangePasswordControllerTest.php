@@ -79,7 +79,7 @@ class ChangePasswordControllerTest extends WebTestCase
     /**
      * Helper method to create a user.
      *
-     * @param array  $roles   Array of roles to assign to the user
+     * @param array  $roles    Array of roles to assign to the user
      * @param string $password Plain text password to be hashed
      *
      * @return User Created user
